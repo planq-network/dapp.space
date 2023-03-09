@@ -453,54 +453,6 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
 ////////////////
 
     /**
-     * @notice Generates `_amount` tokens that are assigned to `_owner`
-     * @param _owner The address that will be assigned the new tokens
-     * @param _amount The quantity of tokens generated
-     * @return True if the tokens are generated correctly
-     */
-    function generateTokens(
-        address _owner,
-        uint _amount
-    )
-        external
-        onlyController
-        returns (bool)
-    {
-        uint curTotalSupply = totalSupplyAt(block.number);
-        require(curTotalSupply + _amount >= curTotalSupply); // Check for overflow
-        uint previousBalanceTo = balanceOfAt(_owner, block.number);
-        require(previousBalanceTo + _amount >= previousBalanceTo); // Check for overflow
-        updateValueAtNow(totalSupplyHistory, curTotalSupply + _amount);
-        updateValueAtNow(balances[_owner], previousBalanceTo + _amount);
-        emit Transfer(address(0), _owner, _amount);
-        return true;
-    }
-
-    /**
-     * @notice Burns `_amount` tokens from `_owner`
-     * @param _owner The address that will lose the tokens
-     * @param _amount The quantity of tokens to burn
-     * @return True if the tokens are burned correctly
-     */
-    function destroyTokens(
-        address _owner,
-        uint _amount
-    )
-        external
-        onlyController
-        returns (bool)
-    {
-        uint curTotalSupply = totalSupplyAt(block.number);
-        require(curTotalSupply >= _amount);
-        uint previousBalanceFrom = balanceOfAt(_owner, block.number);
-        require(previousBalanceFrom >= _amount);
-        updateValueAtNow(totalSupplyHistory, curTotalSupply - _amount);
-        updateValueAtNow(balances[_owner], previousBalanceFrom - _amount);
-        emit Transfer(_owner, address(0), _amount);
-        return true;
-    }
-
-    /**
       * @notice Generates `_amount` tokens that are assigned to `_owner`
        * @param _owner The address that will be assigned the new tokens
        * @param _amount The quantity of tokens generated

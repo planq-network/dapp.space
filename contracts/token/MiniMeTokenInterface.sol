@@ -44,31 +44,6 @@ contract MiniMeTokenInterface is ERC20Token {
         external
         returns(address);
 
-    /**
-     * @notice Generates `_amount` tokens that are assigned to `_owner`
-     * @param _owner The address that will be assigned the new tokens
-     * @param _amount The quantity of tokens generated
-     * @return True if the tokens are generated correctly
-     */
-    function generateTokens(
-        address _owner,
-        uint _amount
-    )
-        external
-        returns (bool);
-
-    /**
-     * @notice Burns `_amount` tokens from `_owner`
-     * @param _owner The address that will lose the tokens
-     * @param _amount The quantity of tokens to burn
-     * @return True if the tokens are burned correctly
-     */
-    function destroyTokens(
-        address _owner,
-        uint _amount
-    )
-        external
-        returns (bool);
 
     /**
      * @notice Enables token holders to transfer their tokens freely if true
