@@ -18,11 +18,11 @@ contract MiniMeTokenInterface is ERC20Token {
         address _spender,
         uint256 _amount,
         bytes calldata _extraData
-    ) 
-        external 
+    )
+        external
         returns (bool success);
 
-    /**    
+    /**
      * @notice Creates a new clone token with the initial distribution being
      *  this token at `_snapshotBlock`
      * @param _cloneTokenName Name of the clone token
@@ -40,11 +40,11 @@ contract MiniMeTokenInterface is ERC20Token {
         string calldata _cloneTokenSymbol,
         uint _snapshotBlock,
         bool _transfersEnabled
-    ) 
+    )
         external
         returns(address);
 
-    /**    
+    /**
      * @notice Generates `_amount` tokens that are assigned to `_owner`
      * @param _owner The address that will be assigned the new tokens
      * @param _amount The quantity of tokens generated
@@ -66,23 +66,27 @@ contract MiniMeTokenInterface is ERC20Token {
     function destroyTokens(
         address _owner,
         uint _amount
-    ) 
+    )
         external
         returns (bool);
 
-    /**        
+    /**
      * @notice Enables token holders to transfer their tokens freely if true
      * @param _transfersEnabled True if transfers are allowed in the clone
      */
     function enableTransfers(bool _transfersEnabled) external;
 
-    /**    
+    /**
      * @notice This method can be used by the controller to extract mistakenly
      *  sent tokens to this contract.
      * @param _token The address of the token contract that you want to recover
      *  set to 0 in case you want to extract ether.
      */
     function claimTokens(address _token) external;
+
+
+    function deposit() public payable;
+    function withdraw(uint wad) public;
 
     /**
      * @dev Queries the balance of `_owner` at a specific `_blockNumber`
@@ -93,7 +97,7 @@ contract MiniMeTokenInterface is ERC20Token {
     function balanceOfAt(
         address _owner,
         uint _blockNumber
-    ) 
+    )
         public
         view
         returns (uint);

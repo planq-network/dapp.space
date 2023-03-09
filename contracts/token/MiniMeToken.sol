@@ -89,7 +89,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
 // Constructor
 ////////////////
 
-    /** 
+    /**
      * @notice Constructor to create a MiniMeToken
      * @param _tokenFactory The address of the MiniMeTokenFactory contract that
      *  will create the Clone token contracts, the token factory needs to be
@@ -112,7 +112,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         uint8 _decimalUnits,
         string memory _tokenSymbol,
         bool _transfersEnabled
-    ) 
+    )
         public
     {
         tokenFactory = TokenFactory(_tokenFactory);
@@ -125,6 +125,15 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         creationBlock = block.number;
     }
 
+    function deposit() public payable {
+        _generateTokens(msg.sender, msg.value);
+        Deposit(msg.sender, msg.value);
+    }
+
+    function withdraw(uint wad) public {
+        _destroyTokens(msg.sender, wad);
+        Withdrawal(msg.sender, wad);
+    }
 
 ///////////////////
 // ERC20 Methods
@@ -153,8 +162,8 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         address _from,
         address _to,
         uint256 _amount
-    ) 
-        external 
+    )
+        external
         returns (bool success)
     {
 
@@ -166,7 +175,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
             require(transfersEnabled);
 
             // The standard ERC 20 transferFrom functionality
-            if (allowed[_from][msg.sender] < _amount) { 
+            if (allowed[_from][msg.sender] < _amount) {
                 return false;
             }
             allowed[_from][msg.sender] -= _amount;
@@ -186,7 +195,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         address _from,
         address _to,
         uint _amount
-    ) 
+    )
         internal
         returns(bool)
     {
@@ -233,7 +242,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         address _spender,
         uint256 _amount
     )
-        internal 
+        internal
         returns (bool)
     {
         require(transfersEnabled);
@@ -284,7 +293,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
     function allowance(
         address _owner,
         address _spender
-    ) 
+    )
         external
         view
         returns (uint256 remaining)
@@ -304,7 +313,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         address _spender,
         uint256 _amount,
         bytes calldata _extraData
-    ) 
+    )
         external
         returns (bool success)
     {
@@ -342,10 +351,10 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
     function balanceOfAt(
         address _owner,
         uint _blockNumber
-    ) 
+    )
         public
         view
-        returns (uint) 
+        returns (uint)
     {
 
         // These next few lines are used when the balance of the token is
@@ -414,7 +423,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         string calldata _cloneTokenSymbol,
         uint _snapshotBlock,
         bool _transfersEnabled
-        ) 
+        )
             external
             returns(address)
         {
@@ -442,7 +451,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
 ////////////////
 // Generate and destroy tokens
 ////////////////
-    
+
     /**
      * @notice Generates `_amount` tokens that are assigned to `_owner`
      * @param _owner The address that will be assigned the new tokens
@@ -476,7 +485,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
     function destroyTokens(
         address _owner,
         uint _amount
-    ) 
+    )
         external
         onlyController
         returns (bool)
@@ -489,6 +498,53 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         updateValueAtNow(balances[_owner], previousBalanceFrom - _amount);
         emit Transfer(_owner, address(0), _amount);
         return true;
+    }
+
+    /**
+      * @notice Generates `_amount` tokens that are assigned to `_owner`
+       * @param _owner The address that will be assigned the new tokens
+       * @param _amount The quantity of tokens generated
+       * @return True if the tokens are generated correctly
+       */
+    function _generateTokens(
+      address _owner,
+      uint _amount
+    )
+    internal
+    returns (bool)
+    {
+      uint curTotalSupply = totalSupplyAt(block.number);
+      require(curTotalSupply + _amount >= curTotalSupply); // Check for overflow
+      uint previousBalanceTo = balanceOfAt(_owner, block.number);
+      require(previousBalanceTo + _amount >= previousBalanceTo); // Check for overflow
+      updateValueAtNow(totalSupplyHistory, curTotalSupply + _amount);
+      updateValueAtNow(balances[_owner], previousBalanceTo + _amount);
+      emit Transfer(address(0), _owner, _amount);
+      return true;
+    }
+
+    /**
+     * @notice Burns `_amount` tokens from `_owner`
+       * @param _owner The address that will lose the tokens
+       * @param _amount The quantity of tokens to burn
+       * @return True if the tokens are burned correctly
+       */
+    function _destroyTokens(
+      address _owner,
+      uint _amount
+    )
+    internal
+    returns (bool)
+    {
+      uint curTotalSupply = totalSupplyAt(block.number);
+      require(curTotalSupply >= _amount);
+      uint previousBalanceFrom = balanceOfAt(_owner, block.number);
+      require(previousBalanceFrom >= _amount);
+      updateValueAtNow(totalSupplyHistory, curTotalSupply - _amount);
+      updateValueAtNow(balances[_owner], previousBalanceFrom - _amount);
+      _owner.transfer(_amount);
+      emit Transfer(_owner, address(0), _amount);
+      return true;
     }
 
 ////////////////
@@ -516,7 +572,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
     function getValueAt(
         Checkpoint[] storage checkpoints,
         uint _block
-    ) 
+    )
         internal
         view
         returns (uint)
@@ -573,7 +629,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         uint size;
         if (_addr == address(0)) {
             return false;
-        }    
+        }
         assembly {
             size := extcodesize(_addr)
         }
