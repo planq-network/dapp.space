@@ -46,7 +46,7 @@ class HowToSubmit extends React.Component {
                       your DApp in the next step compulsory.
                     </li>
                     <li>
-                      Stake the amount of SNT you want to rank your DApp
+                      Stake the amount of PLQ you want to rank your DApp
                       optional.
                     </li>
                     <li>Hit “submit”.</li>
@@ -62,13 +62,13 @@ class HowToSubmit extends React.Component {
                   <p>
                     You need not stake anything to be included - your DApp just
                     won’t appear in the “Highest Ranked” section. If you do
-                    stake SNT, your DApp will appear in that section
+                    stake PLQ, your DApp will appear in that section
                     immediately. The DApp with the highest effective balance
-                    (that is, SNT staked plus/minus votes cast for/against)
+                    (that is, PLQ staked plus/minus votes cast for/against)
                     ranks highest.
                   </p>
                   <p>
-                    SNT you stake is locked in the Discover contract. You can,
+                    PLQ you stake is locked in the Discover contract. You can,
                     at any time, withdraw a percentage of what you have staked.
                     The more you stake, the lower the percentage you can
                     withdraw. Withdrawals must be made from the same wallet as
@@ -78,14 +78,14 @@ class HowToSubmit extends React.Component {
                 <div className={`${styles.frame} ${styles.withBorder}`}>
                   <ol>
                     <li>
-                      Staking <strong>10 000 SNT</strong> returns a rate of{' '}
+                      Staking <strong>10 000 PLQ</strong> returns a rate of{' '}
                       <strong>99.5%</strong>, so you can withdraw up to{' '}
-                      <strong>9 950 SNT.</strong>
+                      <strong>9 950 PLQ.</strong>
                     </li>
                     <li>
-                      Staking <strong>1 000 000 SNT</strong> returns a rate of
+                      Staking <strong>1 000 000 PLQ</strong> returns a rate of
                       50.99%, so you can withdraw up to{' '}
-                      <strong>509 958 SNT.</strong>
+                      <strong>509 958 PLQ.</strong>
                     </li>
                   </ol>
                 </div>
@@ -113,7 +113,7 @@ class HowToSubmit extends React.Component {
                     Anyone is welcome to fork the software and implement
                     different UI choices for the same underlying contract. Note
                     that Discover is not affiliated with Status directly, we
-                    have simply chosen to use SNT as a token of value, to abide
+                    have simply chosen to use PLQ as a token of value, to abide
                     by <a href="https://status.im/about/">Status’ principles</a>
                     , and to take a mobile-first approach to development.
                   </p>

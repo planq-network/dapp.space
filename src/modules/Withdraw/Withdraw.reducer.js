@@ -13,7 +13,7 @@ import BlockchainSDK from '../../common/blockchain'
 
 const SHOW_WITHDRAW_AFTER_CHECK = 'WITHDRAW_SHOW_WITHDRAW_AFTER_CHECK'
 const CLOSE_WITHDRAW = 'WITHDRAW_CLOSE_WITHDRAW'
-const ON_INPUT_SNT_VALUE = 'WITHDRAW_ON_INPUT_SNT_VALUE'
+const ON_INPUT_PLQ_VALUE = 'WITHDRAW_ON_INPUT_PLQ_VALUE'
 
 export const showWithdrawAfterCheckAction = (dapp, withdrawMax) => {
   window.location.hash = 'withdraw'
@@ -75,7 +75,7 @@ export const withdrawAction = (dapp, sntValue) => {
 }
 
 export const onInputSntValueAction = sntValue => ({
-  type: ON_INPUT_SNT_VALUE,
+  type: ON_INPUT_PLQ_VALUE,
   payload: sntValue,
 })
 
@@ -106,7 +106,7 @@ const onInputSntValue = (state, sntValue) => {
 const map = {
   [SHOW_WITHDRAW_AFTER_CHECK]: showWithdrawAfterCheck,
   [CLOSE_WITHDRAW]: closeWithdraw,
-  [ON_INPUT_SNT_VALUE]: onInputSntValue,
+  [ON_INPUT_PLQ_VALUE]: onInputSntValue,
 }
 
 export default reducerUtil(map, withdrawInitialState)

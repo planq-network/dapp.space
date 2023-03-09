@@ -15,7 +15,7 @@ class DiscoverValidator {
       safeMax
     ) {
       throw new Error(
-        `You cannot upvote by this much, try with a lower amount. Maximum upvote amount: 
+        `You cannot upvote by this much, try with a lower amount. Maximum upvote amount:
         ${Number(safeMax) - Number(dapp.balance)}`,
       )
     }
@@ -29,7 +29,7 @@ class DiscoverValidator {
 
     const safeMax = await this.service.safeMax()
     if (amount.div(this.decimalMultiplier).toNumber() > safeMax) {
-      throw new Error('You cannot stake more SNT than the ceiling dictates')
+      throw new Error('You cannot stake more PLQ than the ceiling dictates')
     }
   }
 
@@ -37,7 +37,7 @@ class DiscoverValidator {
     await this.validateUpVoteEffect(id, amount)
 
     if (amount <= 0) {
-      throw new Error('You must send some SNT in order to upvote')
+      throw new Error('You must send some PLQ in order to upvote')
     }
   }
 
@@ -45,12 +45,12 @@ class DiscoverValidator {
     const dapp = await this.service.getDAppById(id)
 
     if (dapp.developer.toLowerCase() !== this.service.sharedContext.account) {
-      throw new Error('Only the developer can withdraw SNT staked on this data')
+      throw new Error('Only the developer can withdraw PLQ staked on this data')
     }
 
     if (amount > dapp.available) {
       throw new Error(
-        'You can only withdraw a percentage of the SNT staked, less what you have already received',
+        'You can only withdraw a percentage of the PLQ staked, less what you have already received',
       )
     }
   }

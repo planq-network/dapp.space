@@ -18,7 +18,7 @@ const SHOW_DOWN_VOTE_AFTER_CHECK = 'VOTE_SHOW_DOWN_VOTE_AFTER_CHECK'
 const CLOSE_VOTE = 'VOTE_CLOSE_VOTE'
 const SWITCH_TO_UPVOTE = 'VOTE_SWITCH_TO_UPVOTE'
 const SWITCH_TO_DOWNVOTE = 'VOTE_SWITCH_TO_DOWNVOTE'
-const ON_INPUT_SNT_VALUE = 'VOTE_ON_INPUT_SNT_VALUE'
+const ON_INPUT_PLQ_VALUE = 'VOTE_ON_INPUT_PLQ_VALUE'
 const UPDATE_AFTER_UP_VOTING_VALUES = 'VOTE_UPDATE_AFTER_UP_VOTING_VALUES'
 const UPDATE_AFTER_DOWN_VOTING_VALUES = 'VOTE_UPDATE_AFTER_DOWN_VOTING_VALUES'
 const LEARN_MORE_UPVOTE = 'VOTE_LEARN_MORE_UPVOTE'
@@ -92,7 +92,7 @@ export const closeVoteAction = () => {
 }
 
 export const onInputSntValueAction = sntValue => ({
-  type: ON_INPUT_SNT_VALUE,
+  type: ON_INPUT_PLQ_VALUE,
   payload: sntValue,
 })
 
@@ -156,7 +156,7 @@ export const upVoteAction = (dapp, amount) => {
       onStartProgressAction(
         dapp.name,
         dapp.image,
-        `↑ Upvote by ${amount} SNT`,
+        `↑ Upvote by ${amount} PLQ`,
         TYPE_UPVOTE,
       ),
     )
@@ -173,7 +173,7 @@ export const upVoteAction = (dapp, amount) => {
 
 export const downVoteAction = (dapp, amount) => {
   return async dispatch => {
-    const msg = amount !== '0' ? ` by ${amount} SNT` : ''
+    const msg = amount !== '0' ? ` by ${amount} PLQ` : ''
 
     dispatch(closeVoteAction())
     dispatch(
@@ -306,7 +306,7 @@ const map = {
   [CLOSE_VOTE]: closeVote,
   [SWITCH_TO_UPVOTE]: switchToUpvote,
   [SWITCH_TO_DOWNVOTE]: switchToDownvote,
-  [ON_INPUT_SNT_VALUE]: onInputSntValue,
+  [ON_INPUT_PLQ_VALUE]: onInputSntValue,
   [UPDATE_AFTER_UP_VOTING_VALUES]: updateAfterUpVotingValues,
   [UPDATE_AFTER_DOWN_VOTING_VALUES]: updateAfterDownVotingValues,
   [LEARN_MORE_UPVOTE]: learnMoreUpVote,

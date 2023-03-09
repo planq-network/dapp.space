@@ -10,7 +10,7 @@ import CategoriesUtils from '../Categories/Categories.utils'
 import { checkNetwork } from '../../common/blockchain/utils'
 import Categories from '../../common/utils/categories'
 import icon from '../../common/assets/images/icon.svg'
-import sntIcon from '../../common/assets/images/SNT.svg'
+import sntIcon from '../../common/assets/images/PLQ.svg'
 import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css'
 import { DappState } from '../../common/data/dapp'
@@ -38,7 +38,7 @@ class Submit extends React.Component {
     this.onEndMove = this.onEndMove.bind(this)
     this.onImgDone = this.onImgDone.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    this.handleSNTChange = this.handleSNTChange.bind(this)
+    this.handlePLQChange = this.handlePLQChange.bind(this)
     this.onClickSubmit = this.onClickSubmit.bind(this)
 
     this.state = {
@@ -212,7 +212,7 @@ class Submit extends React.Component {
     else onUpdate(id, metadata)
   }
 
-  handleSNTChange(e) {
+  handlePLQChange(e) {
     const { value } = e.target
     if (value !== '' && /^[1-9][0-9]*$/.test(value) === false) return
 
@@ -262,7 +262,7 @@ class Submit extends React.Component {
     const visible = visible_submit || visible_rating
 
     /* rating */
-    let currentSNTamount = 0
+    let currentPLQamount = 0
     let dappsByCategory = []
     let catPosition = 0
     let afterVoteRating = null
@@ -458,11 +458,11 @@ class Submit extends React.Component {
             <div className={styles.items}>
               <div className={styles.itemRow}>
                 <span className={styles.item}>
-                  <img src={sntIcon} alt="SNT" width="24" height="24" />
-                  {currentSNTamount.toLocaleString()}
+                  <img src={sntIcon} alt="PLQ" width="24" height="24" />
+                  {currentPLQamount.toLocaleString()}
                 </span>
                 {afterVoteRating !== null &&
-                  afterVoteRating !== currentSNTamount && (
+                  afterVoteRating !== currentPLQamount && (
                     <span className={styles.greenBadge}>
                       {`${afterVoteRating.toLocaleString()} ↑`}
                     </span>
@@ -490,14 +490,14 @@ class Submit extends React.Component {
               <input
                 type="text"
                 value={sntValue}
-                onChange={this.handleSNTChange}
+                onChange={this.handlePLQChange}
                 style={{ width: `${21 * Math.max(1, sntValue.length)}px` }}
               />
             </div>
             <div className={styles.footer}>
               <p className={styles.disclaimer}>
-                SNT you spend to rank your DApp is locked in the store. You can
-                earn back through votes, or withdraw, the majority of this SNT
+                PLQ you spend to rank your DApp is locked in the store. You can
+                earn back through votes, or withdraw, the majority of this PLQ
                 at any time.
               </p>
               {isTestnet && <Network />}

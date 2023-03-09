@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactImageFallback from 'react-image-fallback'
 import styles from './Vote.module.scss'
-import sntIcon from '../../common/assets/images/SNT.svg'
+import sntIcon from '../../common/assets/images/PLQ.svg'
 import CategoriesUtils from '../Categories/Categories.utils'
 import Categories from '../../common/utils/categories'
 import icon from '../../common/assets/images/icon.svg'
@@ -74,7 +74,7 @@ class Vote extends Component {
       return <Modal visible={false} onClickClose={onClickClose} />
     }
 
-    const currentSNTamount = dapp.sntValue
+    const currentPLQamount = dapp.sntValue
     const dappsByCategory = dappState.getDappsByCategory(dapp.category)
 
     let catPosition = dappsByCategory.length
@@ -136,8 +136,8 @@ class Vote extends Component {
                 <div className={styles.items}>
                   <div className={styles.itemRow}>
                     <span className={styles.item}>
-                      <img src={sntIcon} alt="SNT" width="24" height="24" />
-                      {currentSNTamount.toLocaleString()}
+                      <img src={sntIcon} alt="PLQ" width="24" height="24" />
+                      {currentPLQamount.toLocaleString()}
                     </span>
                     {isUpvote &&
                       sntValue > 0 &&
@@ -207,7 +207,7 @@ class Vote extends Component {
                 )}
                 {isUpvote && (
                   <p className={styles.disclaimer}>
-                    SNT you spend to upvote is locked in the contract and
+                    PLQ you spend to upvote is locked in the contract and
                     contributes directly to {dapp.name}'s ranking.{' '}
                     <span className="link" onClick={onClickLearnMoreUpVote}>
                       Learn more↗
@@ -216,7 +216,7 @@ class Vote extends Component {
                 )}
                 {!isUpvote && (
                   <p className={styles.disclaimer}>
-                    SNT you spend to downvote goes directly back to {dapp.name}.
+                    PLQ you spend to downvote goes directly back to {dapp.name}.
                     Downvoting moves their DApp down by 1% of the current
                     ranking. The cost is fixed by our unique bonded curve.{' '}
                     <span className="link" onClick={onClickLearnMoreDownVote}>
@@ -245,17 +245,17 @@ class Vote extends Component {
               <img src="/images/learn-more-curve.png" alt="Bonded Curve" />
               <p>
                 This is what the curve you're using really looks like. The more
-                SNT staked on a DApp, the cheaper it becomes for anyone to
+                PLQ staked on a DApp, the cheaper it becomes for anyone to
                 downvote it.
               </p>
               <p>
-                However, you can upvote this DApp by any amount of SNT you wish.
-                SNT you spend is sent directly to the contract and locked up
+                However, you can upvote this DApp by any amount of PLQ you wish.
+                PLQ you spend is sent directly to the contract and locked up
                 there. It does not
               </p>
               <p>
                 go to Status, the developer of the DApp, or any other middleman.
-                There are no fees, but once the SNT is spent, you cannot get it
+                There are no fees, but once the PLQ is spent, you cannot get it
                 back.
               </p>
               <p>
@@ -283,7 +283,7 @@ class Vote extends Component {
               <img src="/images/learn-more-curve.png" alt="Bonded Curve" />
               <p>
                 This is what the curve you're using really looks like. The more
-                SNT staked on a DApp, the cheaper it becomes for anyone to
+                PLQ staked on a DApp, the cheaper it becomes for anyone to
                 downvote it.
               </p>
               <p>
@@ -291,14 +291,14 @@ class Vote extends Component {
                 its current value down the rankings.{' '}
               </p>
               <p>
-                SNT you spend is sent directly to the developer of the DApp, so
+                PLQ you spend is sent directly to the developer of the DApp, so
                 we can be sure you aren't just trolling them and that, even if
                 you are, you are required to pay for the privilege. It does not
                 go to Status or any other middleman. There are no fees, but once
-                the SNT is spent, you cannot get it back.
+                the PLQ is spent, you cannot get it back.
               </p>
               <p>
-                What you spend is dictated by how much SNT the DApp has already
+                What you spend is dictated by how much PLQ the DApp has already
                 staked, and the exact numerical effect of moving 1% down in the
                 rankings is shown in the previous screen.
               </p>

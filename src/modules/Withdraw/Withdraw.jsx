@@ -8,7 +8,7 @@ import Modal from '../../common/components/Modal'
 import CategoriesUtils from '../Categories/Categories.utils'
 import Categories from '../../common/utils/categories'
 import icon from '../../common/assets/images/icon.svg'
-import sntIcon from '../../common/assets/images/SNT.svg'
+import sntIcon from '../../common/assets/images/PLQ.svg'
 import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css'
 import DappModel from '../../common/data/dapp'
@@ -20,7 +20,7 @@ class Withdraw extends React.Component {
   constructor(props) {
     super(props)
     this.onWithdraw = this.onWithdraw.bind(this)
-    this.handleSNTChange = this.handleSNTChange.bind(this)
+    this.handlePLQChange = this.handlePLQChange.bind(this)
 
     this.state = {
       withdrawAmount: props.withdrawMax || 0,
@@ -43,7 +43,7 @@ class Withdraw extends React.Component {
     onWithdraw(dapp, parseInt(withdrawAmount, 10))
   }
 
-  handleSNTChange(e) {
+  handlePLQChange(e) {
     const { withdrawMax } = this.props
     const { value } = e.target
     if (value !== '' && /^[1-9][0-9]*$/.test(value) === false) return
@@ -73,10 +73,10 @@ class Withdraw extends React.Component {
     if (dapp === null)
       return <Modal visible={false} onClickClose={onClickClose} />
 
-    const currentSNTamount = dapp.sntValue
+    const currentPLQamount = dapp.sntValue
     const dappsByCategory = dappState.getDappsByCategory(dapp.category)
     const afterVoteRating =
-      currentSNTamount - (parseInt(withdrawAmount, 10) || 0)
+      currentPLQamount - (parseInt(withdrawAmount, 10) || 0)
 
     let catPosition = dappsByCategory.length
     for (let i = 0; i < dappsByCategory.length; ++i) {
@@ -114,8 +114,8 @@ class Withdraw extends React.Component {
         <div className={styles.items}>
           <div className={styles.itemRow}>
             <span className={styles.item}>
-              <img src={sntIcon} alt="SNT" width="24" height="24" />
-              {currentSNTamount.toLocaleString()}
+              <img src={sntIcon} alt="PLQ" width="24" height="24" />
+              {currentPLQamount.toLocaleString()}
             </span>
             {afterVoteRating !== null && afterVoteRating >= 0 && (
               <span className={styles.redBadge}>
@@ -145,14 +145,14 @@ class Withdraw extends React.Component {
           <input
             type="text"
             value={withdrawAmount}
-            onChange={this.handleSNTChange}
+            onChange={this.handlePLQChange}
             style={{ width: `${21 * Math.max(1, sntValue.length)}px` }}
           />
         </div>
         <div className={styles.footer}>
           <p className={styles.disclaimer}>
-            SNT you spend to rank your DApp is locked in the store. You can earn
-            back through votes, or withdraw, the majority of this SNT at any
+            PLQ you spend to rank your DApp is locked in the store. You can earn
+            back through votes, or withdraw, the majority of this PLQ at any
             time.
           </p>
           <button

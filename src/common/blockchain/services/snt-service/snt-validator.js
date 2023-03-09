@@ -13,7 +13,7 @@ class SNTValidator {
     const toBalanceBN = new BN(toBalance, 10)
 
     if (amount.gt(toBalanceBN)) {
-      throw new Error('Not enough SNT balance')
+      throw new Error('Not enough PLQ balance')
     }
   }
 

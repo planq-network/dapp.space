@@ -29,7 +29,7 @@ const ON_IMG_CANCEL = 'SUBMIT_ON_IMG_CANCEL'
 const ON_IMG_DONE = 'SUBMIT_ON_IMG_DONE'
 
 const SWITCH_TO_RATING = 'SUBMIT_SWITCH_TO_RATING'
-const ON_INPUT_SNT_VALUE = 'SUBMIT_ON_INPUT_SNT_VALUE'
+const ON_INPUT_PLQ_VALUE = 'SUBMIT_ON_INPUT_PLQ_VALUE'
 
 const showSubmitAfterCheckAction = dapp => {
   window.location.hash = 'submit'
@@ -215,7 +215,7 @@ export const switchToRatingAction = () => ({
 })
 
 export const onInputSntValueAction = sntValue => ({
-  type: ON_INPUT_SNT_VALUE,
+  type: ON_INPUT_PLQ_VALUE,
   payload: sntValue,
 })
 
@@ -347,7 +347,7 @@ const map = {
   [ON_IMG_CANCEL]: onImgCancel,
   [ON_IMG_DONE]: onImgDone,
   [SWITCH_TO_RATING]: switchToRating,
-  [ON_INPUT_SNT_VALUE]: onInputSntValue,
+  [ON_INPUT_PLQ_VALUE]: onInputSntValue,
 }
 
 export default reducerUtil(map, submitInitialState)

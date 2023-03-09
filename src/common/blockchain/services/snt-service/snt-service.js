@@ -48,7 +48,7 @@ class SNTService extends BlockchainService {
       this.sharedContext.account,
     )
   }
-  
+
 }
 
 export default SNTService

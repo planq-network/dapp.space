@@ -4,7 +4,7 @@ import ReactImageFallback from 'react-image-fallback'
 import { DappModel } from '../../utils/models'
 import styles from './DappListItem.module.scss'
 import icon from '../../assets/images/icon.svg'
-import sntIcon from '../../assets/images/SNT.svg'
+import sntIcon from '../../assets/images/PLQ.svg'
 import upvoteArrowIcon from '../../assets/images/upvote-arrow.svg'
 import downvoteArrowIcon from '../../assets/images/downvote-arrow.svg'
 import reviewBadge from '../../assets/images/reviewBadge.svg'
@@ -73,7 +73,7 @@ const DappListItem = props => {
         {showActionButtons && (
           <div className={styles.actionArea}>
             <span className={styles.sntAmount}>
-              <img src={sntIcon} alt="SNT" width="16" height="16" />
+              <img src={sntIcon} alt="PLQ" width="16" height="16" />
               {dapp.sntValue}
             </span>
             {dapp.sntValue > 0 && (
