@@ -52,7 +52,6 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
     event MetadataUpdated(bytes32 indexed id);
     event CeilingUpdated(uint oldCeiling, uint newCeiling);
 
-
     constructor(MiniMeTokenInterface _SNT) public {
         SNT = _SNT;
 
@@ -162,7 +161,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         d.effectiveBalance = d.balance.sub(effect);
 
         require(SNT.transfer(d.developer, _amount), "Transfer failed");
-        require(SNT.withdraw(_amount), "Withdraw failed");
+        SNT.withdraw(_amount);
         emit Withdraw(_id, d.effectiveBalance);
     }
 
@@ -322,7 +321,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         id2index[_id] = dappIdx;
         existingIDs[_id] = true;
 
-        require(SNT.deposit(), "Deposit Failed");
+        SNT.deposit();
         require(SNT.transferFrom(_from, address(this), _amount), "Transfer failed");
         emit DAppCreated(_id, d.effectiveBalance);
     }
@@ -355,7 +354,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         uint effect = temp1.div(temp2);
 
         d.effectiveBalance = d.balance.sub(effect);
-        require(SNT.deposit(), "Deposit Failed");
+        SNT.deposit();
         require(SNT.transferFrom(_from, address(this), _amount), "Transfer failed");
 
         emit Upvote(_id, d.effectiveBalance);
@@ -372,7 +371,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         d.votesCast = d.votesCast.add(vR);
         d.effectiveBalance = d.effectiveBalance.sub(b);
 
-        require(SNT.deposit(), "Deposit Failed");
+        SNT.deposit();
         require(SNT.transferFrom(_from, d.developer, _amount), "Transfer failed");
 
         emit Downvote(_id, d.effectiveBalance);

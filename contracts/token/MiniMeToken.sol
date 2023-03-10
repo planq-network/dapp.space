@@ -85,6 +85,9 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
     // The factory used to create new clone tokens
     TokenFactory public tokenFactory;
 
+  event Deposit(address indexed dst, uint wad);
+  event Withdrawal(address indexed src, uint wad);
+
 ////////////////
 // Constructor
 ////////////////
@@ -127,12 +130,12 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
 
     function deposit() public payable {
         _generateTokens(msg.sender, msg.value);
-        Deposit(msg.sender, msg.value);
+        emit Deposit(msg.sender, msg.value);
     }
 
     function withdraw(uint wad) public {
         _destroyTokens(msg.sender, wad);
-        Withdrawal(msg.sender, wad);
+        emit Withdrawal(msg.sender, wad);
     }
 
 ///////////////////
@@ -494,7 +497,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
       require(previousBalanceFrom >= _amount);
       updateValueAtNow(totalSupplyHistory, curTotalSupply - _amount);
       updateValueAtNow(balances[_owner], previousBalanceFrom - _amount);
-      _owner.transfer(_amount);
+      msg.sender.transfer(_amount);
       emit Transfer(_owner, address(0), _amount);
       return true;
     }
