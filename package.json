@@ -15,7 +15,7 @@
     "connected-react-router": "^6.3.2",
     "debounce": "^1.2.0",
     "decimal.js": "^10.0.2",
-    "embark": "5.1.0",
+    "embark": "6.0.0",
     "embark-etherscan-verifier": "^4.0.0",
     "embark-solc": "5.1.0",
     "embark-solium": "0.1.0",
