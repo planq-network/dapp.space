@@ -10,7 +10,7 @@ const config = {
   RATE_LIMIT_TIME              : env.RATE_LIMIT_TIME              || 15,
   RATE_LIMIT_MAX_REQ           : env.RATE_LIMIT_MAX_REQ           || 1,
   /* Misc */
-  ENVIRONMENT                  : env.ENVIRONMENT                  || "DEV",
+  ENVIRONMENT                  : env.ENVIRONMENT                  || "PROD",
   /* Database */
   DB_CONNECTION                : env.DB_CONNECTION                || null,
   /* Access */
@@ -21,8 +21,8 @@ const config = {
   IPFS_PORT                    : env.IPFS_PORT                    || "443",
   IPFS_PROTOCOL                : env.IPFS_PROTOCOL                || "https",
   /* Blockchain */
-  DISCOVER_CONTRACT            : env.DISCOVER_CONTRACT            || "0x02d990A1C66e4Cf00bCdD98a0196149F7DdA2065",
-  BLOCKCHAIN_CONNECTION_POINT  : env.BLOCKCHAIN_CONNECTION_POINT  || "wss://ropsten.infura.io/ws/v3/8675214b97b44e96b70d05326c61fd6a",
+  DISCOVER_CONTRACT            : env.DISCOVER_CONTRACT            || "0xAE4Bb282F92349D00A3109E485FafC745Dd945C4",
+  BLOCKCHAIN_CONNECTION_POINT  : env.BLOCKCHAIN_CONNECTION_POINT  || "https://evm-rpc.planq.network",
   /* EMail */
   EMAIL_USER                   : env.EMAIL_USER                   || null,
   EMAIL_PASSWORD               : env.EMAIL_PASSWORD               || null,

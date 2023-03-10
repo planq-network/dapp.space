@@ -9,22 +9,23 @@ module.exports = {
       {
         mnemonic: process.env.WALLET_MNEMONIC,
         hdpath: process.env.HD_PATH, // If undefined, it will default to the default hd path
-        balance: '1534983463450 ether',
+        balance: '1534 ether',
       },
     ],
   },
 
   development: {
     networkType: 'testnet',
-    endpoint: `https://ropsten.infura.io/v3/8675214b97b44e96b70d05326c61fd6a`,
+    endpoint: `https://evm-rpc.planq.network`,
   },
 
   testnet: {
     networkType: 'testnet',
-    endpoint: `https://ropsten.infura.io/v3/8675214b97b44e96b70d05326c61fd6a`,
+    endpoint: `https://evm-rpc.planq.network`,
   },
 
   livenet: {
-    endpoint: `https://mainnet.infura.io/v3/8675214b97b44e96b70d05326c61fd6a`,
+    networkId: 7070,
+    endpoint: `https://evm-rpc.planq.network`,
   },
 }
