@@ -1,4 +1,4 @@
-# Discover  
+# Discover
 
 Discover new and useful DApps that are mobile-friendly and easy to use. Viewing curated information does not require any special tools, though effecting the way information is ranked will require a web3 wallet, whether that is Status, MetaMask, Trust, Brave or whichever one you prefer.
 
@@ -6,7 +6,7 @@ You can learn more about bonded curves and how Discover works [here](https://our
 
 ## Available Scripts
 
-This project is based on Embark v4.0.1, with a few things customised for React. 
+This project is based on Embark v4.0.1, with a few things customised for React.
 ```
 yarn run build:dev
 ```
@@ -33,8 +33,8 @@ Discover: { address: '0x008db8b84547982e8F6677D38e9b9ea64F3ccB8B' },
 Mainnet:
 
 ```
-MiniMeToken: { address: '0x744d70fdbe2ba4cf95131626614a1763df805b9e' },
-Discover: { address: '0x5bCF2767F86f14eDd82053bfBfd5069F68C2C5F8' },
+MiniMeToken: { address: '0xf62fd7E2FBe9E610205e4b1B1393d041Bc05f77A' },
+Discover: { address: '0xAE4Bb282F92349D00A3109E485FafC745Dd945C4' },
 ```
 
 ## Running It Locally
@@ -56,9 +56,9 @@ On Linux, setting up `mongodb` is as easy as `sudo apt install -y mongodb`, whic
     1. Compile all your contracts using Embark, connecting to Ropsten and IPFS through an Infura gateway.
     2. Deploy a new instance of Discover onto the Ropsten test network for you to work from. It will only be deployed once, after that the address of your contract is stored in, and fetched from, `shared.development.chains.json`.
     3. Build the frontend, create a directory called `full-build`, move each directory from the `back-end` into it, and include the `frontend` as a directory of its own. It will make sure `node_modules` are installed, then you can serve everything in `full-build` by running:
-3. `yarn server-start`. Navigate to `http://localhost:4000` to get developing cool new things for the future of curated information. 
+3. `yarn server-start`. Navigate to `http://localhost:4000` to get developing cool new things for the future of curated information.
 
-**Note:** 
+**Note:**
 
 1. Change this line in [back-end/config/index.js](https://github.com/dap-ps/discover/blob/master/back-end/config/index.js#L24) to your local Ropsten version of the contract, stored in `shared.development.chains.json`.
 2. You'll need to visit [simpledapp.eth using Status](https://status.im/get/) -> Assets Tab -> Request `STT`. This is the Status Test Token on Ropsten that needs to be used with your instance of Discover in order to submit/upvote/downvote in your local app. Using a proper test network even for local development allows us to better understand what the user experience is actually like in production more easily.
@@ -70,12 +70,12 @@ On Linux, setting up `mongodb` is as easy as `sudo apt install -y mongodb`, whic
 3. Integrate [embeddable whisper chats](https://github.com/status-im/status-chat-widget) into the site, so that it is easy to plug into the community chat directly "behind" each DApp (it's just the name of the DApp as a whisper topic, i.e. #cryptokitties).
 4. Research a way to fetch information about popular DApps on Ethereum through non-economic metrics. Perhaps this means just plugging into an API from OpenSea/StateOfTheDApps for now and leveraging their work. Perhaps it means figuring out how to [gossip information about use of DApps via whisper](https://discuss.status.im/t/friend-to-friend-content-discovery-community-feeds/1212)?
 
- 
+
 #### Running unit tests
 
 Use `./node_modules/.bin/embark test`
 
-To test a specific smart contract you can use `./node_modules/.bin/embark test test/Discover_spec.js`. 
+To test a specific smart contract you can use `./node_modules/.bin/embark test test/Discover_spec.js`.
 
 #### Running slither
 
