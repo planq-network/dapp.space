@@ -1,21 +1,25 @@
 /* global web3 */
 
-import EmbarkJS from '../../../embarkArtifacts/embarkjs'
+const ethers = require('ethers')
 
 class BlockchainService {
   constructor(sharedContext, contract, Validator) {
     this.contract = contract.address
-
+    // eslint-disable-next-line no-underscore-dangle
+    this._provider = new ethers.providers.Web3Provider(window.ethereum)
     this.sharedContext = sharedContext
     this.validator = new Validator(this)
   }
 
   async getAccount() {
     try {
-      if (web3 && EmbarkJS.Blockchain.Providers.web3) {
-        const account = (await EmbarkJS.enableEthereum())[0]
+      if (web3 && ethers.providers.Web3Provider) {
+        const account = (
+          await window.ethereum.request({ method: 'eth_requestAccounts' })
+        )[0]
         return (
-          account || (await EmbarkJS.Blockchain.Providers.web3.getAccounts())[0]
+          account ||
+          (await window.ethereum.request({ method: 'eth_requestAccounts' }))[0]
         )
       }
 
@@ -36,7 +40,7 @@ class BlockchainService {
       throw new Error('web3 is missing')
     }
 
-    clonedContract.currentProvider = EmbarkJS.Blockchain.Providers.web3.getCurrentProvider()
+    clonedContract.currentProvider = ethers.providers.Web3Provider
 
     return clonedContract
   }

@@ -7,9 +7,10 @@ let metadataCache = null
 class MetadataClient {
   static async upload(metadata, email) {
     try {
-      const uploadedDataResponse = await HTTPClient.postRequest(
-        '/metadata', { metadata, email },
-      )
+      const uploadedDataResponse = await HTTPClient.postRequest('/metadata', {
+        metadata,
+        email,
+      })
 
       return helpers.getBytes32FromIpfsHash(uploadedDataResponse.data.hash)
     } catch (error) {
@@ -19,9 +20,7 @@ class MetadataClient {
 
   static async update(dappId, tx) {
     try {
-      await HTTPClient.postRequest(
-        `/metadata/update/${dappId}`, { txHash: tx }
-      )
+      await HTTPClient.postRequest(`/metadata/update/${dappId}`, { txHash: tx })
     } catch (error) {
       throw new Error('DApp metadata was not updated in the client')
     }
@@ -30,9 +29,7 @@ class MetadataClient {
   static async requestApproval(metadataBytes32) {
     try {
       const ipfsHash = helpers.getIpfsHashFromBytes32(metadataBytes32)
-      await HTTPClient.postRequest(
-        `/metadata/approve/email/${ipfsHash}`
-      )
+      await HTTPClient.postRequest(`/metadata/approve/email/${ipfsHash}`)
     } catch (error) {
       throw new Error('No DApp was found for approval')
     }
@@ -42,7 +39,7 @@ class MetadataClient {
     try {
       const convertedHash = helpers.getIpfsHashFromBytes32(metadataBytes32)
       const retrievedMetadataResponse = await HTTPClient.getRequest(
-        `/metadata/${convertedHash}`
+        `/metadata/${convertedHash}`,
       )
 
       if (metadataCache !== null)
@@ -55,7 +52,7 @@ class MetadataClient {
 
   static async retrieveAllDappsMetadata() {
     const retrievedDAppsMetadataResponse = await HTTPClient.getRequest(
-      '/metadata/all'
+      '/metadata/all',
     )
 
     const formatedDappsMetadata = {}

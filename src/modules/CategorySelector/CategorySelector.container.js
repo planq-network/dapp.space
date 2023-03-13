@@ -15,7 +15,4 @@ const mapDispatchToProps = dispatch => ({
   onClickCloseDesktopMenu: () => dispatch(closeDesktopAction()),
 })
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(CategorySelector)
+export default connect(null, mapDispatchToProps)(CategorySelector)

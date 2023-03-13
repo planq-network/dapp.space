@@ -9,7 +9,4 @@ const mapDispatchToProps = dispatch => ({
   hideTransaction: () => dispatch(hideAction()),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Alert)
+export default connect(mapStateToProps, mapDispatchToProps)(Alert)

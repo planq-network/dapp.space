@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '../../common/utils/router'
 import HowToSubmit from './HowToSubmit'
 import {
   hideHowToSubmitAction,
@@ -20,8 +20,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(HowToSubmit),
+  connect(mapStateToProps, mapDispatchToProps)(HowToSubmit),
 )

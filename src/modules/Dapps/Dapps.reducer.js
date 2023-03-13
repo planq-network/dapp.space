@@ -39,7 +39,9 @@ export const fetchAllDappsAction = () => {
       for (let i = 0; i < allDappsWithoutMeta.length; i++) {
         dappSource = allDappsWithoutMeta[i]
         if (dappSource !== null) {
-          const dappModel = DappModel.instanceFromBlockchainWithMetadata(dappSource)
+          const dappModel = DappModel.instanceFromBlockchainWithMetadata(
+            dappSource,
+          )
           dispatch(onUpdateDappsAction(dappState.creditDapp(dappModel)))
         }
       }

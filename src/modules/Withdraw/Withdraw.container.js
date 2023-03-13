@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '../../common/utils/router'
 import Withdraw from './Withdraw'
 
 import {
@@ -17,8 +17,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Withdraw),
+  connect(mapStateToProps, mapDispatchToProps)(Withdraw),
 )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '../../common/utils/router'
 import { push } from 'connected-react-router'
 import Submit from './Submit'
 
@@ -20,7 +20,7 @@ import {
   updateAction,
   onInputEmailAction,
 } from './Submit.reducer'
-import { showAlertAction } from '../Alert/Alert.reducer';
+import { showAlertAction } from '../Alert/Alert.reducer'
 
 const mapStateToProps = state =>
   Object.assign(state.submit, { dappState: state.dapps })
@@ -44,9 +44,4 @@ const mapDispatchToProps = dispatch => ({
   showAlert: msg => dispatch(showAlertAction(msg)),
 })
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Submit),
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Submit))

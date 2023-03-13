@@ -10,10 +10,7 @@ const Footer = props => {
 
   return (
     <div className={styles.footer}>
-      <a
-        href="https://join.status.im/dap-ps"
-        className={styles.footerItem}
-      >
+      <a href="https://join.status.im/dap-ps" className={styles.footerItem}>
         <div className={styles.iconWrap}>
           <img src={communityIcon} alt="Join the DApp community chat" />
         </div>
@@ -34,10 +31,7 @@ const Footer = props => {
           <p>Submit your favourite DApp now! No permission required.</p>
         </div>
       </div>
-      <a
-        href="https://join.status.im/support"
-        className={styles.footerItem}
-      >
+      <a href="https://join.status.im/support" className={styles.footerItem}>
         <div className={styles.iconWrap}>
           <img src={supportIcon} alt="Support" />
         </div>

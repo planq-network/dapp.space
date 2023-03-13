@@ -11,7 +11,4 @@ const mapDispatchToProps = dispatch => ({
   checkTransactionStatus: hash => dispatch(checkTransactionStatusAction(hash)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(TransactionStatus)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionStatus)

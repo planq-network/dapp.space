@@ -6,7 +6,4 @@ const mapDispatchToProps = dispatch => ({
   select: category => dispatch(onSelectCategoryAction(category)),
 })
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(CategorySelector)
+export default connect(null, mapDispatchToProps)(CategorySelector)

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '../../common/utils/router'
 import Vote from './Vote'
 import {
   closeVoteAction,
@@ -31,9 +31,4 @@ const mapDispatchToProps = dispatch => ({
   onClickCloseLearnMore: () => dispatch(closeLearnMoreAction()),
 })
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Vote),
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Vote))

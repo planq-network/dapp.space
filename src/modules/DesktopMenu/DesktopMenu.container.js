@@ -8,7 +8,4 @@ const mapDispatchToProps = dispatch => ({
   onClickClose: () => dispatch(closeDesktopAction()),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(DesktopMenu)
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopMenu)

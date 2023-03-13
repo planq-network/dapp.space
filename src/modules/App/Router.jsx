@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from '../Home'
 import Filtered from '../Filtered'
 import RecentlyAdded from '../RecentlyAdded'
@@ -23,14 +23,14 @@ class Router extends React.Component {
   render() {
     return (
       <Fragment>
-        <Switch>
+        <Routes>
           <Route exact path="/" component={Home} />
           <Route path="/categories/:id" component={Filtered} />
           <Route path="/all" component={Dapps} />
           <Route path="/recently-added" component={RecentlyAdded} />
           <Route path="/terms" component={Terms} />
           <Route path="/:dapp_name" component={Home} />
-        </Switch>
+        </Routes>
         <Vote />
         <Submit />
         <HowToSubmit />

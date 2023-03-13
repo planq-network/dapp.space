@@ -1,11 +1,20 @@
 /* global web3 */
+import { ethers } from 'ethers'
 import { broadcastContractFn } from '../helpers'
 import MetadataClient from '../../../clients/metadata-client'
 
 import BlockchainService from '../blockchain-service'
 
 import DiscoverValidator from './discover-validator'
-import DiscoverContract from '../../../../embarkArtifacts/contracts/Discover'
+
+import DiscoverArtifact from '../../../../artifacts/contracts/Discover.sol/Discover.json'
+
+const DiscoverContract = new ethers.Contract(
+  '0xAE4Bb282F92349D00A3109E485FafC745Dd945C4',
+  DiscoverArtifact.abi,
+  // eslint-disable-next-line no-underscore-dangle
+  this._provider.getSigner(0),
+)
 
 const BN = require('bn.js')
 
@@ -34,14 +43,14 @@ class DiscoverService extends BlockchainService {
     const tokenAmount = new BN(amount, 10)
     await this.validator.validateUpVoteEffect(id, tokenAmount)
 
-    return DiscoverContract.methods
+    return DiscoverContract.functions
       .upvoteEffect(id, tokenAmount.toString())
       .call({ from: this.sharedContext.account })
   }
 
   async downVoteCost(id) {
     const dapp = await this.getDAppById(id)
-    return DiscoverContract.methods
+    return DiscoverContract.functions
       .downvoteCost(dapp.id)
       .call({ from: this.sharedContext.account })
   }
@@ -75,7 +84,7 @@ class DiscoverService extends BlockchainService {
 
   async getAllDappsWithoutMetadata() {
     try {
-      const contractDappsCount = await DiscoverContract.methods
+      const contractDappsCount = await DiscoverContract.functions
         .getDAppsCount()
         .call({ from: this.sharedContext.account })
 
@@ -83,7 +92,7 @@ class DiscoverService extends BlockchainService {
         JSON.stringify(await MetadataClient.retrieveMetadataCache()),
       )
 
-      let dapps = [];
+      let dapps = []
 
       await this.pushDapps(dappsCache, dapps)
 
@@ -95,7 +104,7 @@ class DiscoverService extends BlockchainService {
 
   async getAllDappsWithMetadata() {
     try {
-      const contractDappsCount = await DiscoverContract.methods
+      const contractDappsCount = await DiscoverContract.functions
         .getDAppsCount()
         .call({ from: this.sharedContext.account })
 
@@ -103,13 +112,15 @@ class DiscoverService extends BlockchainService {
         JSON.stringify(await MetadataClient.retrieveMetadataCache()),
       )
 
-      let asyncCalls = [ ]
+      let asyncCalls = []
       for (let i = 0; i < contractDappsCount; i++) {
         asyncCalls.push(
-          DiscoverContract.methods.dapps(i).call({from: this.sharedContext.account})
+          DiscoverContract.methods
+            .dapps(i)
+            .call({ from: this.sharedContext.account }),
         )
       }
-      let dapps = [];
+      let dapps = []
       /* using Promise.all() to run calls in parallel */
       let dappsCalls = await Promise.all(asyncCalls)
 
@@ -134,7 +145,7 @@ class DiscoverService extends BlockchainService {
 
   async getDAppByIndexWithMetadata(index) {
     try {
-      const dapp = await DiscoverContract.methods
+      const dapp = await DiscoverContract.functions
         .dapps(index)
         .call({ from: this.sharedContext.account })
 
@@ -157,11 +168,11 @@ class DiscoverService extends BlockchainService {
 
     if (dappExists) {
       try {
-        const dappId = await DiscoverContract.methods
+        const dappId = await DiscoverContract.functions
           .id2index(id)
           .call({ from: this.sharedContext.account })
 
-        dapp = await DiscoverContract.methods
+        dapp = await DiscoverContract.functions
           .dapps(dappId)
           .call({ from: this.sharedContext.account })
       } catch (error) {
@@ -193,13 +204,13 @@ class DiscoverService extends BlockchainService {
   }
 
   async safeMax() {
-    return DiscoverContract.methods
+    return DiscoverContract.functions
       .safeMax()
       .call({ from: this.sharedContext.account })
   }
 
   async isDAppExists(id) {
-    return DiscoverContract.methods
+    return DiscoverContract.functions
       .existingIDs(id)
       .call({ from: this.sharedContext.account })
   }
@@ -232,7 +243,7 @@ class DiscoverService extends BlockchainService {
     let createdTx = undefined
 
     if (tokenAmount.gt(new BN(0, 10))) {
-      const callData = ConnectedDiscoverContract.methods
+      const callData = ConnectedDiscoverContract.functions
         .createDApp(dappId, tokenAmount.toString(), uploadedMetadata)
         .encodeABI()
 
@@ -253,7 +264,7 @@ class DiscoverService extends BlockchainService {
 
     await this.validator.validateUpVoting(id, tokenAmount)
 
-    const callData = DiscoverContract.methods
+    const callData = DiscoverContract.functions
       .upvote(id, tokenAmount.toString())
       .encodeABI()
     return this.sharedContext.SNTService.approveAndCall(
@@ -271,7 +282,7 @@ class DiscoverService extends BlockchainService {
 
     const tokenAmount = this.decimalMultiplier.mul(amountBN)
 
-    const callData = DiscoverContract.methods
+    const callData = DiscoverContract.functions
       .downvote(dapp.id, tokenAmount.toString())
       .encodeABI()
     return this.sharedContext.SNTService.approveAndCall(
@@ -290,7 +301,10 @@ class DiscoverService extends BlockchainService {
 
     try {
       return broadcastContractFn(
-        ConnectedDiscoverContract.methods.withdraw(id, tokenAmount.toString()),
+        ConnectedDiscoverContract.functions.withdraw(
+          id,
+          tokenAmount.toString(),
+        ),
         this.sharedContext.account,
       )
     } catch (error) {
@@ -311,7 +325,7 @@ class DiscoverService extends BlockchainService {
 
     try {
       const tx = await broadcastContractFn(
-        ConnectedDiscoverContract.methods.setMetadata(id, uploadedMetadata),
+        ConnectedDiscoverContract.functions.setMetadata(id, uploadedMetadata),
         this.sharedContext.account,
       )
 
@@ -326,7 +340,7 @@ class DiscoverService extends BlockchainService {
 
   async withdrawMax(dappId) {
     const decimals = 1000000
-    const draw = await DiscoverContract.methods.withdrawMax(dappId).call({
+    const draw = await DiscoverContract.functions.withdrawMax(dappId).call({
       from: this.sharedContext.account,
     })
     const withdraw = parseInt(draw, 10)

@@ -20,7 +20,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleProfileModalAction(dappId, data)),
 })
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(DappListItem)
+export default connect(null, mapDispatchToProps)(DappListItem)

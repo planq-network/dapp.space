@@ -1,5 +1,5 @@
+import { ethers } from 'ethers'
 import utils from './utils'
-import EmbarkJS from '../../embarkArtifacts/embarkjs'
 
 import SNTService from './services/snt-service/snt-service'
 import DiscoverService from './services/discover-service/discover-service'
@@ -29,12 +29,9 @@ const getInstance = async () => {
         reject(error.message)
       }
     }
-
-    EmbarkJS.onReady(err => {
-      if (err) reject(err)
-
-      returnInstance()
-    })
+    // eslint-disable-next-line no-underscore-dangle
+    this._provider = new ethers.providers.Web3Provider(window.ethereum)
+    returnInstance()
   })
 }
 

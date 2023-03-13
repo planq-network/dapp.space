@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '../../common/utils/router'
 
 import Profile from './Profile'
 import { showWithdrawAction } from '../Withdraw/Withdraw.reducer'
@@ -13,9 +13,4 @@ const mapDispatchToProps = dispatch => ({
   onClickUpdateMetadata: dapp => dispatch(showSubmitAction(dapp)),
 })
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  )(Profile),
-)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile))

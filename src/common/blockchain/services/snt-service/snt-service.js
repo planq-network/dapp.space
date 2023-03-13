@@ -1,11 +1,17 @@
+import { ethers } from 'ethers'
 import { broadcastContractFn } from '../helpers'
 
 import BlockchainService from '../blockchain-service'
 
 import SNTValidator from './snt-validator'
-import MiniMeToken from '../../../../embarkArtifacts/contracts/MiniMeToken'
+import MiniMeTokenArtifact from '../../../../artifacts/contracts/token/MiniMeToken.sol/MiniMeToken.json'
 
-const SNTToken = MiniMeToken
+const SNTToken = new ethers.Contract(
+  '0xf62fd7E2FBe9E610205e4b1B1393d041Bc05f77A',
+  MiniMeTokenArtifact.abi,
+  // eslint-disable-next-line no-underscore-dangle
+  this._provider.getSigner(0),
+)
 
 class SNTService extends BlockchainService {
   constructor(sharedContext) {
@@ -13,25 +19,25 @@ class SNTService extends BlockchainService {
   }
 
   async allowance(from, to) {
-    return SNTToken.methods
+    return SNTToken.functions
       .allowance(from, to)
       .call({ from: this.sharedContext.account })
   }
 
   async balanceOf(account) {
-    return SNTToken.methods
+    return SNTToken.functions
       .balanceOf(account)
       .call({ from: this.sharedContext.account })
   }
 
   async controller() {
-    return SNTToken.methods
+    return SNTToken.functions
       .controller()
       .call({ from: this.sharedContext.account })
   }
 
   async transferable() {
-    return SNTToken.methods
+    return SNTToken.functions
       .transfersEnabled()
       .call({ from: this.sharedContext.account })
   }
@@ -40,7 +46,7 @@ class SNTService extends BlockchainService {
     const ConnectedSNTToken = await super.__unlockServiceAccount(SNTToken)
     await this.validator.validateApproveAndCall(spender, amount)
     return broadcastContractFn(
-      ConnectedSNTToken.methods.approveAndCall(
+      ConnectedSNTToken.functions.approveAndCall(
         spender,
         amount.toString(),
         callData,
@@ -48,7 +54,6 @@ class SNTService extends BlockchainService {
       this.sharedContext.account,
     )
   }
-
 }
 
 export default SNTService
