@@ -17,7 +17,7 @@ const config = {
   ADMIN_USER                   : env.ADMIN_USER                   || "admin",
   ADMIN_PASSWORD               : env.ADMIN_PASSWORD               || "discoverbancor",
   /* IPFS */
-  IPFS_HOST                    : env.IPFS_HOST                    || "ipfs.status.im",
+  IPFS_HOST                    : env.IPFS_HOST                    || "ipfs.planq.network",
   IPFS_PORT                    : env.IPFS_PORT                    || "443",
   IPFS_PROTOCOL                : env.IPFS_PROTOCOL                || "https",
   /* Blockchain */
