@@ -3,10 +3,17 @@
 const ethers = require('ethers')
 
 class BlockchainService {
-  constructor(sharedContext, contract, Validator) {
-    this.contract = contract.address
+  constructor(sharedContext, address = '', abi = '', Validator) {
+    //this.contract = address.address
     // eslint-disable-next-line no-underscore-dangle
     this._provider = new ethers.providers.Web3Provider(window.ethereum)
+    this.contractRaw = new ethers.Contract(
+      address,
+      abi,
+      // eslint-disable-next-line no-underscore-dangle
+      this._provider.getSigner(0),
+    )
+    this.contract = this.contractRaw.address
     this.sharedContext = sharedContext
     this.validator = new Validator(this)
   }

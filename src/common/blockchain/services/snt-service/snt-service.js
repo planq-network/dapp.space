@@ -10,13 +10,13 @@ let SNTToken
 
 class SNTService extends BlockchainService {
   constructor(sharedContext) {
-    super(sharedContext, SNTToken, SNTValidator)
-    SNTToken = new ethers.Contract(
+    super(
+      sharedContext,
       '0xf62fd7E2FBe9E610205e4b1B1393d041Bc05f77A',
       MiniMeTokenArtifact.abi,
-      // eslint-disable-next-line no-underscore-dangle
-      this._provider.getSigner(0),
+      SNTValidator,
     )
+    SNTToken = this.contractRaw
   }
 
   async allowance(from, to) {
