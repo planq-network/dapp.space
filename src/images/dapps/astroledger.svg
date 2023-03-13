@@ -7,28 +7,28 @@
 	<circle fill="#475493" cx="535.993" cy="1264.794" r="345.105"/>
 	<g>
 		<g>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="373.207" y2="1270.211"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="698.714" y1="1270.211" x2="535.994" y2="1196.177"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="373.207" y1="1270.211" x2="535.994" y2="1196.177"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="373.207" y1="1270.211" x2="535.994" y2="1366.386"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="698.714" y2="1270.211"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1196.177" x2="535.994" y2="1366.386"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="535.994" y2="1196.177"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="698.714" y1="1270.211" x2="535.994" y2="1366.386"/>
-			<polyline fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="373.207" y2="1270.211"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="698.714" y1="1270.211" x2="535.994" y2="1196.177"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="373.207" y1="1270.211" x2="535.994" y2="1196.177"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="373.207" y1="1270.211" x2="535.994" y2="1366.386"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="698.714" y2="1270.211"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1196.177" x2="535.994" y2="1366.386"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1000.116" x2="535.994" y2="1196.177"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="698.714" y1="1270.211" x2="535.994" y2="1366.386"/>
+			<polyline fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" points="
 				535.994,1530.388 373.207,1301.054 535.994,1397.229 			"/>
-			<polyline fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="
+			<polyline fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" points="
 				535.994,1530.388 698.843,1301.054 535.994,1397.229 			"/>
-			
-				<line fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1530.388" x2="535.994" y2="1397.229"/>
+
+				<line fill="none" stroke="#FFFFFF" strokeWidth="6" stroke-linecap="round" stroke-linejoin="round" x1="535.994" y1="1530.388" x2="535.994" y2="1397.229"/>
 		</g>
 		<g>
 			<g>

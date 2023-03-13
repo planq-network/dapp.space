@@ -5,8 +5,8 @@
 <path d="M19.4 19.4742C20.8 19.4742 22 18.2742 22 16.8742C22 15.4742 20.8 14.2742 19.4 14.2742C18 14.2742 16.8 15.4742 16.8 16.8742C16.8 18.2742 18 19.4742 19.4 19.4742Z" fill="white"/>
 <path d="M18.4 25.4742C19.3 25.4742 20.1 24.6742 20.1 23.7742C20.1 22.8742 19.3 22.0742 18.4 22.0742C17.5 22.0742 16.7 22.8742 16.7 23.7742C16.7 24.6742 17.4 25.4742 18.4 25.4742Z" fill="white"/>
 <path d="M34.7 33.7742C36.8 33.7742 38.4 32.0742 38.4 30.0742C38.4 28.0742 36.7 26.3742 34.7 26.3742C32.6 26.3742 31 28.0742 31 30.0742C31 32.0742 32.6 33.7742 34.7 33.7742Z" fill="white"/>
-<path d="M19.5 31.4742L31.1 17.8742" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M33.5 28.0742L32.3 18.0742" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M28.9 15.6742L21.7 17.1742" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
-<path d="M23 33.3742L32.3 29.9742" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M19.5 31.4742L31.1 17.8742" stroke="white" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M33.5 28.0742L32.3 18.0742" stroke="white" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M28.9 15.6742L21.7 17.1742" stroke="white" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M23 33.3742L32.3 29.9742" stroke="white" strokeWidth="1.5" strokeMiterlimit="10"/>
 </svg>

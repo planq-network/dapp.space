@@ -31,26 +31,26 @@ const icon = () => (
     <path
       d="M5.5 18.4742L17.1 4.87421"
       stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
     <path
       d="M19.5 15.0742L18.3 5.07422"
       stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
     <path
       d="M14.9 2.67419L7.70001 4.17419"
       stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
     <path
       d="M9 20.3742L18.3 16.9742"
       stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
   </svg>
 )
