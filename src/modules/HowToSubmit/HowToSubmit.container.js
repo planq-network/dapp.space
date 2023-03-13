@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(hideHowToSubmitAction())
     setTimeout(() => {
       dispatch(showSubmitAction())
-    }, 0)
+    }, 10)
   },
 })
 
