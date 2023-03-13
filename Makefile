@@ -7,7 +7,7 @@ export WALLET_MNEMONIC ?= erupt point century seek certain escape solution flee 
 ifeq ($(NODE_ENV),production)
 export EMBARK_TARGET ?= livenet
 else
-ifeq ($(NODE_ENV), localhost) 
+ifeq ($(NODE_ENV), localhost)
 export EMBARK_TARGET ?= development
 else
 export EMBARK_TARGET ?= testnet
@@ -53,8 +53,8 @@ endif
 
 compile-contracts: ##@compile Compile the contracts using Embark.js
 compile-contracts: check-prod-vars
-	./node_modules/.bin/embark build "${EMBARK_TARGET}"
-
+	./node_modules/.bin/hardhat compile && cp -r artifacts ./src/artifacts
+##"${EMBARK_TARGET}"
 compile-js: ##@compile Compile the React application
 	./node_modules/.bin/react-scripts build
 
@@ -104,7 +104,7 @@ clean-build-dir: ##@clean Remove full-build folder and keep node_modules (depend
 ifeq ($(NODE_ENV),localhost)
 	find ./full-build -mindepth 1 ! -regex '^./full-build/\(node_modules\|yarn.lock\).*' -delete; 2> /dev/null
 else
-	rm -fr full-build 
+	rm -fr full-build
 endif
 
 clean: clean-build-dir clean-archive ##@clean Cleanup all the build artifacts

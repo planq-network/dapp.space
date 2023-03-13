@@ -1,6 +1,5 @@
 {
     "extends": [
-      "airbnb",
       "plugin:prettier/recommended"
     ],
     "plugins": [
@@ -16,6 +15,9 @@
       "func-names": "off",
       "eqeqeq": "off",
       "class-methods-use-this": "off"
+    },
+    "globals": {
+      "location": true
     },
     "env": {
       "browser": true,
