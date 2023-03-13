@@ -7,6 +7,7 @@ class BlockchainService {
     //this.contract = address.address
     // eslint-disable-next-line no-underscore-dangle
     this._provider = new ethers.providers.Web3Provider(window.ethereum)
+    this.abi = abi
     this.contractRaw = new ethers.Contract(
       address,
       abi,
@@ -39,9 +40,13 @@ class BlockchainService {
   }
 
   async __unlockServiceAccount(Contract) {
-    const clonedContract = Contract.clone()
-
     this.sharedContext.account = await this.getAccount()
+
+    const clonedContract = new ethers.Contract(
+      this.contract,
+      this.abi,
+      this._provider.getSigner(0),
+    )
 
     if (!this.sharedContext.account) {
       throw new Error('web3 is missing')

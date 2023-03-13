@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios, * as others from 'axios'
 
 const DEFAULT_HEADERS = {
   Accept: 'application/json',

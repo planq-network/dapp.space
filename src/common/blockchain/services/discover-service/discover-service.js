@@ -235,7 +235,7 @@ class DiscoverService extends BlockchainService {
     const dappMetadata = JSON.parse(JSON.stringify(metadata))
     dappMetadata.uploader = this.sharedContext.account
 
-    const dappId = web3.utils.keccak256(JSON.stringify(dappMetadata))
+    const dappId = ethers.utils.keccak256(JSON.stringify(dappMetadata))
     await this.validator.validateDAppCreation(dappId, tokenAmount)
 
     const uploadedMetadata = await MetadataClient.upload(dappMetadata, email)
@@ -295,6 +295,7 @@ class DiscoverService extends BlockchainService {
 
   async withdraw(id, amount) {
     const tokenAmount = this.decimalMultiplier.mul(new BN(amount, 10))
+
     const ConnectedDiscoverContract = await super.__unlockServiceAccount(
       DiscoverContract,
     )
