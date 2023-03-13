@@ -24,19 +24,21 @@ class Router extends React.Component {
     return (
       <Fragment>
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route path="/categories/:id" component={Filtered} />
-          <Route path="/all" component={Dapps} />
-          <Route path="/recently-added" component={RecentlyAdded} />
-          <Route path="/terms" component={Terms} />
-          <Route path="/:dapp_name" component={Home} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/categories/:id" element={<Filtered />} />
+          <Route path="/all" element={<Dapps />} />
+          <Route path="/recently-added" element={<RecentlyAdded />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/:dapp_name" element={<Home />} />
         </Routes>
         <Vote />
         <Submit />
         <HowToSubmit />
         <TransactionStatus />
         <Alert />
-        <Route path="/:dapp_name" component={Profile} />
+        <Routes>
+          <Route path="/:dapp_name" component={<Profile />} />
+        </Routes>
         <Withdraw />
       </Fragment>
     )
