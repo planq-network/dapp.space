@@ -9,7 +9,7 @@ const TRANSACTION_STATUSES = {
 const waitOneMoreBlock = async function(prevBlockNumber) {
   return new Promise(resolve => {
     setTimeout(async () => {
-      const blockNumber = await web3.eth.getBlockNumber()
+      const blockNumber = await window.ethereum.getBlockNumber()
       if (prevBlockNumber === blockNumber) {
         return waitOneMoreBlock(prevBlockNumber)
       }
@@ -24,7 +24,7 @@ export default {
       return TRANSACTION_STATUSES.Successful
     }
 
-    const txReceipt = await web3.eth.getTransactionReceipt(txHash)
+    const txReceipt = await window.ethereum.getTransactionReceipt(txHash)
     if (txReceipt) {
       await waitOneMoreBlock(txReceipt.blockNumber)
 
@@ -38,7 +38,7 @@ export default {
 }
 
 const checkNetwork = async () => {
-  const networkId = await web3.eth.net.getId()
+  const networkId = await window.ethereum.networkVersion
   return networkId !== 1
 }
 

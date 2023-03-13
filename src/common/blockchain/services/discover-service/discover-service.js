@@ -9,12 +9,7 @@ import DiscoverValidator from './discover-validator'
 
 import DiscoverArtifact from '../../../../artifacts/contracts/Discover.sol/Discover.json'
 
-const DiscoverContract = new ethers.Contract(
-  '0xAE4Bb282F92349D00A3109E485FafC745Dd945C4',
-  DiscoverArtifact.abi,
-  // eslint-disable-next-line no-underscore-dangle
-  this._provider.getSigner(0),
-)
+let DiscoverContract
 
 const BN = require('bn.js')
 
@@ -36,6 +31,12 @@ class DiscoverService extends BlockchainService {
   constructor(sharedContext) {
     super(sharedContext, DiscoverContract, DiscoverValidator)
     this.decimalMultiplier = new BN('1000000000000000000', 10)
+    DiscoverContract = new ethers.Contract(
+      '0xAE4Bb282F92349D00A3109E485FafC745Dd945C4',
+      DiscoverArtifact.abi,
+      // eslint-disable-next-line no-underscore-dangle
+      this._provider.getSigner(0),
+    )
   }
 
   // View methods

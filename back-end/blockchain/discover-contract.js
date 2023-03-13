@@ -1,5 +1,5 @@
-const web3 = require('./web3')
+const web3 = require('ethers')
 const config = require('./../config')
 const DiscoverABI = require('./discover-abi.json')
 
-module.exports = new web3.eth.Contract(DiscoverABI, config.DISCOVER_CONTRACT)
+module.exports = new web3.Contract(config.DISCOVER_CONTRACT, DiscoverABI)

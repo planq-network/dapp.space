@@ -29,8 +29,7 @@ const getInstance = async () => {
         reject(error.message)
       }
     }
-    // eslint-disable-next-line no-underscore-dangle
-    this._provider = new ethers.providers.Web3Provider(window.ethereum)
+
     returnInstance()
   })
 }
