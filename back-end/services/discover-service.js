@@ -1,38 +1,35 @@
-const DiscoverContract = require('../blockchain/discover-contract');
+const DiscoverContract = require('../blockchain/discover-contract')
 
-const logger = require('./../logger/logger').getLoggerFor('Discover-Service');
+const logger = require('./../logger/logger').getLoggerFor('Discover-Service')
 
-const ACCOUNT = '0x0000000000000000000000000000000000000000';
+const ACCOUNT = '0x0000000000000000000000000000000000000000'
 
 class DiscoverService {
+  static async retrieveDApp(id) {
+    try {
+      const dappIndex = await DiscoverContract.functions
+        .id2index(id)
+        .call({ from: ACCOUNT })
 
-    static async retrieveDApp(id) {
-        try {
-            const dappIndex = await DiscoverContract.methods
-                .id2index(id)
-                .call({ from: ACCOUNT });
+      const dapp = await DiscoverContract.functions
+        .dapps(dappIndex)
+        .call({ from: ACCOUNT })
 
-            const dapp = await DiscoverContract.methods
-                .dapps(dappIndex)
-                .call({ from: ACCOUNT });
+      if (dapp.id != id) {
+        throw new Error('Error fetching correct data from contract')
+      }
 
-            if (dapp.id != id) {
-                throw new Error('Error fetching correct data from contract')
-            }
-
-            return dapp;
-        } catch (error) {
-            logger.error(error.message);
-            throw new Error(`A dapp with id [${id}] is not found in the contract`);
-        }
-
+      return dapp
+    } catch (error) {
+      logger.error(error.message)
+      throw new Error(`A dapp with id [${id}] is not found in the contract`)
     }
+  }
 
-    static async hasStaked(dappId) {
-        const dapp = await DiscoverService.retrieveDApp(dappId);
-        return dapp.effectiveBalance > 0;
-    }
-
+  static async hasStaked(dappId) {
+    const dapp = await DiscoverService.retrieveDApp(dappId)
+    return dapp.effectiveBalance > 0
+  }
 }
 
-module.exports = DiscoverService;
+module.exports = DiscoverService

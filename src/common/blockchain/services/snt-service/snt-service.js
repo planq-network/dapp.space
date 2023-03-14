@@ -20,38 +20,26 @@ class SNTService extends BlockchainService {
   }
 
   async allowance(from, to) {
-    return SNTToken.functions
-      .allowance(from, to)
-      .call({ from: this.sharedContext.account })
+    return SNTToken.allowance(from, to)
   }
 
   async balanceOf(account) {
-    return SNTToken.functions
-      .balanceOf(account)
-      .call({ from: this.sharedContext.account })
+    return SNTToken.balanceOf(account)
   }
 
   async controller() {
-    return SNTToken.functions
-      .controller()
-      .call({ from: this.sharedContext.account })
+    return SNTToken.controller()
   }
 
   async transferable() {
-    return SNTToken.functions
-      .transfersEnabled()
-      .call({ from: this.sharedContext.account })
+    return SNTToken.transfersEnabled()
   }
 
   async approveAndCall(spender, amount, callData) {
     const ConnectedSNTToken = await super.__unlockServiceAccount(SNTToken)
     await this.validator.validateApproveAndCall(spender, amount)
     return broadcastContractFn(
-      ConnectedSNTToken.functions.approveAndCall(
-        spender,
-        amount.toString(),
-        callData,
-      ),
+      ConnectedSNTToken.approveAndCall(spender, amount.toString(), callData),
       this.sharedContext.account,
     )
   }
