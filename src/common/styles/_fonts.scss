@@ -1,37 +1,32 @@
 @font-face {
-  font-family: 'Inter';
+  font-family: 'EudoxusSans';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/Inter-Regular.woff2') format('woff2'),
-    url('/fonts/Inter-Regular.woff') format('woff');
+  src: url('/fonts/EudoxusSans-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'EudoxusSans';
   font-style: italic;
   font-weight: 400;
-  src: url('/fonts/Inter-Italic.woff2') format('woff2'),
-    url('/fonts/Inter-Italic.woff') format('woff');
+  src: url('/fonts/EudoxusSans-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'EudoxusSans';
   font-style: normal;
   font-weight: 500;
-  src: url('/fonts/Inter-Medium.woff2') format('woff2'),
-    url('/fonts/Inter-Medium.woff') format('woff');
+  src: url('/fonts/EudoxusSans-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'EudoxusSans';
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/Inter-Bold.woff2') format('woff2'),
-    url('/fonts/Inter-Bold.woff') format('woff');
+  src: url('/fonts/EudoxusSans-Bold.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'EudoxusSans';
   font-style: italic;
   font-weight: 700;
-  src: url('/fonts/Inter-BoldItalic.woff2') format('woff2'),
-    url('/fonts/Inter-BoldItalic.woff') format('woff');
+  src: url('/fonts/EudoxusSans-Bold.ttf') format('truetype');
 }
