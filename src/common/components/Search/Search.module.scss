@@ -75,6 +75,7 @@
     border-radius: calculateRem(4);
     overflow: hidden;
     margin: calculateRem(16);
+    margin-left: calculateRem(75);
     background-color: $headline-color;
     img {
       padding: calculateRem(5);

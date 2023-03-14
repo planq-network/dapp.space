@@ -26,7 +26,7 @@
   justify-content: center;
   position: absolute;
   left: 20px;
-  top: 60px;
+  top: calculateRem(70);
   border-radius: 50%;
   background: #fff;
   z-index: 1;
@@ -36,7 +36,7 @@
   cursor: pointer;
   z-index: 24;
 
-  @media (min-width: $desktop) {
+  @media (min-width: 130px) {
     display: flex;
   }
 }
