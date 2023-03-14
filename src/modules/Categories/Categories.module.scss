@@ -9,6 +9,7 @@
 
 .headline {
   font-family: $font;
+  color: $headline-color;
   font-size: calculateRem(17);
   margin: 0;
 }
@@ -20,7 +21,7 @@
   margin: 0 calculateRem(10) calculateRem(30) calculateRem(10);
 
   @media (min-width: $desktop) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: unset;
   }
 }
@@ -36,7 +37,7 @@
   padding: calculateRem(12);
   margin: calculateRem(4);
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   overflow: hidden;
   flex-direction: column;
   justify-content: flex-start;

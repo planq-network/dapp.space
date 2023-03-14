@@ -6,6 +6,7 @@
 
 .headline {
   font-family: $font;
+  color: $headline-color;
   font-size: calculateRem(17);
   margin: 0;
 }
