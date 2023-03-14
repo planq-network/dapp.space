@@ -75,8 +75,10 @@
     border-radius: calculateRem(4);
     overflow: hidden;
     margin: calculateRem(16);
+    background-color: $headline-color;
     img {
       padding: calculateRem(5);
+      background-color: $headline-color;
       align-self: center;
     }
     .search {
