@@ -24,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  background-color: $background;
 }
 
 /**
@@ -36,7 +37,7 @@ main {
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
+ * `article` contexts in Chrome, Firefox, aFnd Safari.
  */
 
 h1 {

@@ -2,6 +2,7 @@
 
 .headline {
   font-family: $font;
+  color: $headline-color;
   font-size: calculateRem(17);
   margin-left: calculateRem(15);
   margin-bottom: calculateRem(10);

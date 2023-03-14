@@ -10,9 +10,9 @@ const Footer = props => {
 
   return (
     <div className={styles.footer}>
-      <a href="https://join.status.im/dap-ps" className={styles.footerItem}>
+      <a href="https://discord.gg/planq-network" className={styles.footerItem}>
         <div className={styles.iconWrap}>
-          <img src={communityIcon} alt="Join the DApp community chat" />
+          <img src={communityIcon} alt="Join the Planq community chat" />
         </div>
         <div>
           <h2>Join the DApp community chat</h2>
