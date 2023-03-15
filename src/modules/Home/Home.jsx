@@ -26,7 +26,7 @@ class Home extends React.Component {
         {loaded && (
           <>
             <div className={styles.header}>
-              <h2 className={styles.headline}>Discover</h2>
+              <h2 className={styles.headline}>Dapp.space</h2>
             </div>
             <DesktopMenu />
             <Search

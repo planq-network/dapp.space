@@ -13,7 +13,6 @@ const imageMap = {
   DEFI: defi,
   MARKETPLACES: marketplaces,
   OTHER: other,
-  MEDIA: other, // TODO: fix with icon from design
   GAMES: games,
   COLLECTIBLES: collectibles,
   SOCIAL_NETWORKS: socialNetworks,
