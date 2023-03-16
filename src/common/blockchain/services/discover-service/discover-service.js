@@ -11,8 +11,6 @@ import DiscoverArtifact from '../../../../artifacts/contracts/Discover.sol/Disco
 
 let DiscoverContract
 
-const BN = require('bn.js')
-
 const EMPTY_METADATA = {
   developer: '',
   id: '',
@@ -35,13 +33,13 @@ class DiscoverService extends BlockchainService {
       DiscoverArtifact.abi,
       DiscoverValidator,
     )
-    this.decimalMultiplier = new BN('1000000000000000000', 10)
+    this.decimalMultiplier = ethers.BigNumber.from('1000000000000000000')
     DiscoverContract = this.contractRaw
   }
 
   // View methods
   async upVoteEffect(id, amount) {
-    const tokenAmount = new BN(amount, 10)
+    const tokenAmount = ethers.BigNumber.from(amount)
     await this.validator.validateUpVoteEffect(id, tokenAmount)
 
     return DiscoverContract.upvoteEffect(id, tokenAmount.toString())
@@ -204,8 +202,9 @@ class DiscoverService extends BlockchainService {
 
   // Transaction methods
   async createDApp(amount, metadata, email) {
-    const tokenAmount = this.decimalMultiplier.mul(new BN(amount, 10))
-
+    const tokenAmount = this.decimalMultiplier.mul(
+      ethers.BigNumber.from(amount),
+    )
     const ConnectedDiscoverContract = await super.__unlockServiceAccount(
       DiscoverContract,
     )
@@ -223,27 +222,38 @@ class DiscoverService extends BlockchainService {
     // eslint-disable-next-line no-undef-init
     let createdTx = undefined
 
-    if (tokenAmount.gt(new BN(0, 10))) {
-      const callData = ConnectedDiscoverContract.createDApp(
+    if (tokenAmount.gt(ethers.BigNumber.from(0))) {
+      let callData /* = ConnectedDiscoverContract.createDApp(
         dappId,
         tokenAmount.toString(),
         uploadedMetadata,
-      ).encodeABI()
-
+      ).encodeABI()*/
+      console.log('this works-1')
+      let iface = new ethers.utils.Interface(DiscoverArtifact.abi)
+      console.log('this works0')
+      callData = iface.encodeFunctionData('createDApp', [
+        dappId,
+        tokenAmount.toString(),
+        uploadedMetadata,
+      ])
+      console.log('this works1')
       createdTx = await this.sharedContext.SNTService.approveAndCall(
         this.contract,
         tokenAmount,
         callData,
       )
+      console.log('this works2')
     }
-
+    console.log('this works3')
     await MetadataClient.requestApproval(uploadedMetadata)
 
     return { tx: createdTx, id: dappId }
   }
 
   async upVote(id, amount) {
-    const tokenAmount = this.decimalMultiplier.mul(new BN(amount, 10))
+    const tokenAmount = this.decimalMultiplier.mul(
+      ethers.BigNumber.from(amount),
+    )
 
     await this.validator.validateUpVoting(id, tokenAmount)
 
@@ -262,7 +272,7 @@ class DiscoverService extends BlockchainService {
     const dapp = await this.getDAppById(id)
     const amount = (await this.downVoteCost(dapp.id)).c
 
-    const amountBN = new BN(amount, 10)
+    const amountBN = ethers.BigNumber.from(amount)
 
     const tokenAmount = this.decimalMultiplier.mul(amountBN)
 
@@ -278,7 +288,9 @@ class DiscoverService extends BlockchainService {
   }
 
   async withdraw(id, amount) {
-    const tokenAmount = this.decimalMultiplier.mul(new BN(amount, 10))
+    const tokenAmount = this.decimalMultiplier.mul(
+      ethers.BigNumber.from(amount),
+    )
 
     const ConnectedDiscoverContract = await super.__unlockServiceAccount(
       DiscoverContract,

@@ -52,7 +52,7 @@ class BlockchainService {
       throw new Error('web3 is missing')
     }
 
-    clonedContract.currentProvider = ethers.providers.Web3Provider
+    clonedContract.currentProvider = this._provider.getSigner(0)
 
     return clonedContract
   }

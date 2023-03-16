@@ -1,4 +1,4 @@
-const BN = require('bn.js')
+import { ethers } from 'ethers'
 
 class SNTValidator {
   constructor(service) {
@@ -10,7 +10,7 @@ class SNTValidator {
       this.service.sharedContext.account,
     )
 
-    const toBalanceBN = new BN(toBalance, 10)
+    const toBalanceBN = new ethers.BigNumber.from(toBalance)
 
     if (amount.gt(toBalanceBN)) {
       throw new Error('Not enough PLQ balance')

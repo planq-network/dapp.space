@@ -1,9 +1,9 @@
-const BN = require('bn.js')
+import { ethers } from 'ethers'
 
 class DiscoverValidator {
   constructor(service) {
     this.service = service
-    this.decimalMultiplier = new BN('1000000000000000000', 10)
+    this.decimalMultiplier = ethers.BigNumber.from('1000000000000000000')
   }
 
   async validateUpVoteEffect(id, amount) {
