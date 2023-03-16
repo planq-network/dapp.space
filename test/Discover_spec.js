@@ -49,8 +49,8 @@ contract('Discover', function() {
   let decimalMultiplier = new BN('1000000000000000000', 10)
 
   it('should set max and safeMax values correctly', async function() {
-    let resultMax = await Discover.functions.max().call()
-    let resultSafeMax = await Discover.functions.safeMax().call()
+    let resultMax = await Discover.max()
+    let resultSafeMax = await Discover.safeMax()
     let expectedMax = (6804870174 * 292) / 1000000
     let expectedSafeMax = (expectedMax * 77) / 100 - 1
     assert.strictEqual(parseInt(resultMax, 10), Math.round(expectedMax))
@@ -66,15 +66,19 @@ contract('Discover', function() {
     let amount = temp.toString()
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFue'
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions
-      .createDApp(id, amount, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[0] })
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.createDApp(
+      id,
+      amount,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[0] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
     let developer = accounts[0]
 
     assert.strictEqual(developer, receipt.developer)
@@ -85,16 +89,15 @@ contract('Discover', function() {
     )
 
     // Check Discover actually receives the SNT!
-    let bal_receipt = await SNT.functions
-      .balanceOf(Discover.options.address)
-      .call()
+    let bal_receipt = await SNT.balanceOf(Discover.options.address)
+
     assert.strictEqual(parseInt(amount, 10), parseInt(bal_receipt, 10))
 
     // Having received the SNT, check that it updates the particular DApp's storage values
     assert.strictEqual(tokens, parseInt(receipt.balance, 10))
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
     let rate = Math.round(decimals - (tokens * decimals) / max)
     assert.strictEqual(rate, parseInt(receipt.rate, 10))
 
@@ -116,15 +119,19 @@ contract('Discover', function() {
     let amount = temp.toString()
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFue'
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions
-      .createDApp(id, amount, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.createDApp(
+      id,
+      amount,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
 
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount, encodedCall)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount,
+        encodedCall,
+      ).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -135,34 +142,42 @@ contract('Discover', function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFue'
-    let initial = await Discover.functions.max().call()
+    let initial = await Discover.max()
     let tokens = parseInt(initial, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     let amount0 = 0
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
+    await SNT.generateTokens(accounts[0], amount).send()
 
-    const encodedCall = Discover.functions
-      .createDApp(id, amount, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
+    const encodedCall = Discover.createDApp(
+      id,
+      amount,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount, encodedCall)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount,
+        encodedCall,
+      ).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
     }
 
-    const encodedCall0 = Discover.functions
-      .createDApp(id, amount0, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
+    const encodedCall0 = Discover.createDApp(
+      id,
+      amount0,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount0, encodedCall0)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount0,
+        encodedCall0,
+      ).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -173,10 +188,11 @@ contract('Discover', function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFeu'
-    await Discover.functions
-      .setMetadata(id, TestUtils.getBytes32FromIpfsHash(metadata))
-      .send({ from: accounts[0] })
-    let receipt = await Discover.functions.dapps(0).call()
+    await Discover.setMetadata(
+      id,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).send({ from: accounts[0] })
+    let receipt = await Discover.dapps(0)
     assert.strictEqual(
       TestUtils.getBytes32FromIpfsHash(metadata),
       receipt.metadata,
@@ -189,14 +205,15 @@ contract('Discover', function() {
     let metadata_actual = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFeu'
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBDDeu'
     try {
-      await Discover.functions
-        .setMetadata(id, TestUtils.getBytes32FromIpfsHash(metadata))
-        .send({ from: accounts[1] })
+      await Discover.setMetadata(
+        id,
+        TestUtils.getBytes32FromIpfsHash(metadata),
+      ).send({ from: accounts[1] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
     }
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
     assert.strictEqual(
       TestUtils.getBytes32FromIpfsHash(metadata_actual),
       receipt.metadata,
@@ -211,18 +228,20 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
-    let initial = await Discover.functions.dapps(0).call()
-    let before = await SNT.functions.balanceOf(Discover.options.address).call()
+    let initial = await Discover.dapps(0)
+    let before = await SNT.balanceOf(Discover.options.address)
     // This is the special case where no downvotes have yet been cast
-    let up_effect = await Discover.functions.upvoteEffect(id, tokens).call()
+    let up_effect = await Discover.upvoteEffect(id, tokens)
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions.upvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[0] })
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.upvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[0] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
 
     let developer = accounts[0]
 
@@ -230,7 +249,7 @@ contract('Discover', function() {
     assert.strictEqual(id, receipt.id)
 
     // Check Discover actually receives the SNT!
-    let after = await SNT.functions.balanceOf(Discover.options.address).call()
+    let after = await SNT.balanceOf(Discover.options.address)
     let bal_effect = parseInt(after, 10) - parseInt(before, 10)
     assert.strictEqual(bal_effect, parseInt(amount, 10))
 
@@ -238,8 +257,8 @@ contract('Discover', function() {
     let upvotedBalance = parseInt(initial.balance, 10) + tokens
     assert.strictEqual(upvotedBalance, parseInt(receipt.balance, 10))
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
     let rate = Math.ceil(decimals - (upvotedBalance * decimals) / max)
     assert.strictEqual(rate, parseInt(receipt.rate, 10))
 
@@ -263,12 +282,14 @@ contract('Discover', function() {
       '0x7465737400000000000000000000000000000000000000000000000000000000'
     let amount = 0
 
-    await SNT.functions.generateTokens(accounts[0], 10000).send()
-    const encodedCall = Discover.functions.upvote(id, amount).encodeABI()
+    await SNT.generateTokens(accounts[0], 10000).send()
+    const encodedCall = Discover.upvote(id, amount).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount, encodedCall)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount,
+        encodedCall,
+      ).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -278,18 +299,20 @@ contract('Discover', function() {
   it('should not let you upvote by an amount that exceeds the ceiling', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let initial = await Discover.functions.max().call()
+    let initial = await Discover.max()
     let tokens = parseInt(initial, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions.upvote(id, amount).encodeABI()
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.upvote(id, amount).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount, encodedCall)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount,
+        encodedCall,
+      ).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -299,29 +322,31 @@ contract('Discover', function() {
   it('should handle first downvote correctly', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let cost = await Discover.functions.downvoteCost(id).call()
+    let cost = await Discover.downvoteCost(id)
     let tokens = parseInt(cost.c, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
     let developer = accounts[0]
-    let initial = await Discover.functions.dapps(0).call()
-    let bal_before = await SNT.functions.balanceOf(developer).call()
+    let initial = await Discover.dapps(0)
+    let bal_before = await SNT.balanceOf(developer)
 
-    await SNT.functions.generateTokens(accounts[1], amount).send()
-    const encodedCall = Discover.functions.downvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[1] })
+    await SNT.generateTokens(accounts[1], amount).send()
+    const encodedCall = Discover.downvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[1] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
 
     assert.strictEqual(developer, receipt.developer)
     assert.strictEqual(id, receipt.id)
 
     // Check the developer actually receives the SNT!
-    let bal_after = await SNT.functions.balanceOf(developer).call()
+    let bal_after = await SNT.balanceOf(developer)
     let bal_effect = parseInt(bal_after, 10) - parseInt(bal_before, 10)
     assert.strictEqual(Math.round(bal_effect / decimalMultiplier), tokens)
 
@@ -344,29 +369,31 @@ contract('Discover', function() {
   it('should handle second downvote correctly', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let cost = await Discover.functions.downvoteCost(id).call()
+    let cost = await Discover.downvoteCost(id)
     let tokens = parseInt(cost.c, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     let developer = accounts[0]
 
-    let initial = await Discover.functions.dapps(0).call()
-    let bal_before = await SNT.functions.balanceOf(developer).call()
+    let initial = await Discover.dapps(0)
+    let bal_before = await SNT.balanceOf(developer)
 
-    await SNT.functions.generateTokens(accounts[1], amount).send()
-    const encodedCall = Discover.functions.downvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[1] })
+    await SNT.generateTokens(accounts[1], amount).send()
+    const encodedCall = Discover.downvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[1] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
 
     assert.strictEqual(developer, receipt.developer)
     assert.strictEqual(id, receipt.id)
 
     // Check the developer actually receives the SNT!
-    let bal_after = await SNT.functions.balanceOf(developer).call()
+    let bal_after = await SNT.balanceOf(developer)
     let bal_effect = parseInt(bal_after, 10) - parseInt(bal_before, 10)
     assert.strictEqual(Math.round(bal_effect / decimalMultiplier), tokens)
 
@@ -399,26 +426,26 @@ contract('Discover', function() {
     let amountAbove = temp1.toString()
     let amountBelow = temp2.toString()
 
-    await SNT.functions
-      .generateTokens(accounts[1], amountAbove + amountBelow)
-      .send()
-    const encodedCall = Discover.functions.downvote(id, amountAbove).encodeABI()
+    await SNT.generateTokens(accounts[1], amountAbove + amountBelow).send()
+    const encodedCall = Discover.downvote(id, amountAbove).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amountAbove, encodedCall)
-        .send({ from: accounts[1] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amountAbove,
+        encodedCall,
+      ).send({ from: accounts[1] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
     }
 
-    const encodedCall1 = Discover.functions
-      .downvote(id, amountBelow)
-      .encodeABI()
+    const encodedCall1 = Discover.downvote(id, amountBelow).encodeABI()
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amountBelow, encodedCall1)
-        .send({ from: accounts[1] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amountBelow,
+        encodedCall1,
+      ).send({ from: accounts[1] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -433,24 +460,26 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
-    let initial = await Discover.functions.dapps(0).call()
-    let before = await SNT.functions.balanceOf(Discover.options.address).call()
-    let up_effect = await Discover.functions.upvoteEffect(id, tokens).call()
+    let initial = await Discover.dapps(0)
+    let before = await SNT.balanceOf(Discover.options.address)
+    let up_effect = await Discover.upvoteEffect(id, tokens)
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions.upvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[0] })
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.upvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[0] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
     let developer = accounts[0]
 
     assert.strictEqual(developer, receipt.developer)
     assert.strictEqual(id, receipt.id)
 
     // Check Discover actually receives the SNT!
-    let after = await SNT.functions.balanceOf(Discover.options.address).call()
+    let after = await SNT.balanceOf(Discover.options.address)
     let bal_effect = parseInt(after, 10) - parseInt(before, 10)
     assert.strictEqual(Math.round(bal_effect / decimalMultiplier), tokens)
 
@@ -458,8 +487,8 @@ contract('Discover', function() {
     let upvotedBalance = parseInt(initial.balance, 10) + tokens
     assert.strictEqual(upvotedBalance, parseInt(receipt.balance, 10))
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
     let rate = Math.round(decimals - (upvotedBalance * decimals) / max)
     assert.strictEqual(rate, parseInt(receipt.rate, 10))
 
@@ -490,14 +519,14 @@ contract('Discover', function() {
       '0x7465737400000000000000000000000000000000000000000000000000000000'
     let amount = 10
 
-    let receipt = await Discover.functions.dapps(0).call()
-    let effect = await Discover.functions.upvoteEffect(id, amount).call()
+    let receipt = await Discover.dapps(0)
+    let effect = await Discover.upvoteEffect(id, amount)
 
     // Mock receiving the SNT
     let mBalance = parseInt(receipt.balance, 10) + amount
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
 
     let mRate = Math.round(decimals - (mBalance * decimals) / max)
     let mAvailable = mBalance * mRate
@@ -519,10 +548,10 @@ contract('Discover', function() {
   it('should throw already in upvoteEffect if you exceed the ceiling', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let initial = await Discover.functions.max().call()
+    let initial = await Discover.max()
     let amount = parseInt(initial, 10)
     try {
-      await Discover.functions.upvoteEffect(id, amount).call()
+      await Discover.upvoteEffect(id, amount)
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -537,19 +566,19 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
-    let initial = await Discover.functions.dapps(0).call()
-    let before = await SNT.functions.balanceOf(Discover.options.address).call()
-    let before_dev = await SNT.functions.balanceOf(accounts[0]).call()
-    let receipt_obj = await Discover.functions
-      .withdraw(id, amount)
-      .send({ from: accounts[0] })
+    let initial = await Discover.dapps(0)
+    let before = await SNT.balanceOf(Discover.options.address)
+    let before_dev = await SNT.balanceOf(accounts[0])
+    let receipt_obj = await Discover.withdraw(id, amount).send({
+      from: accounts[0],
+    })
     let receipt = receipt_obj.events.Withdraw.returnValues
 
     assert.strictEqual(id, receipt.id)
 
     // Check Discover actually sends SNT to the developer
-    let after = await SNT.functions.balanceOf(Discover.options.address).call()
-    let after_dev = await SNT.functions.balanceOf(accounts[0]).call()
+    let after = await SNT.balanceOf(Discover.options.address)
+    let after_dev = await SNT.balanceOf(accounts[0])
     let difference = parseInt(before, 10) - parseInt(after, 10)
     let difference_dev = parseInt(after_dev, 10) - parseInt(before_dev, 10)
 
@@ -557,8 +586,8 @@ contract('Discover', function() {
     assert.strictEqual(Math.round(difference_dev / decimalMultiplier), tokens)
 
     // Recalculate e_balance manually and check it matches what is returned
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
 
     let balance = parseInt(initial.balance, 10) - tokens
     let rate = Math.ceil(decimals - (balance * decimals) / max)
@@ -577,7 +606,7 @@ contract('Discover', function() {
     assert.strictEqual(e_balance, effective_balance)
 
     // Having withdrawn the SNT, check that it updates the particular DApp's storage values properly
-    let check = await Discover.functions.dapps(0).call()
+    let check = await Discover.dapps(0)
 
     let withdrawnBalance = parseInt(initial.balance, 10) - tokens
     assert.strictEqual(parseInt(check.balance, 10), withdrawnBalance)
@@ -595,7 +624,7 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     try {
-      await Discover.functions.withdraw(id, amount).send({ from: accounts[0] })
+      await Discover.withdraw(id, amount).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -605,13 +634,13 @@ contract('Discover', function() {
   it('should not allow withdrawing more than was staked minus what has already been received', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
     let tokens = parseInt(receipt.available, 10) + 1
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     try {
-      await Discover.functions.withdraw(id, amount).send({ from: accounts[0] })
+      await Discover.withdraw(id, amount).send({ from: accounts[0] })
       assert.fail('should have reverted before')
     } catch (error) {
       TestUtils.assertJump(error)
@@ -626,7 +655,7 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     try {
-      await Discover.functions.withdraw(id, amount).send({ from: accounts[1] })
+      await Discover.withdraw(id, amount).send({ from: accounts[1] })
     } catch (error) {
       TestUtils.assertJump(error)
     }
@@ -635,29 +664,31 @@ contract('Discover', function() {
   it('should handle downvotes after withdrawals correctly', async function() {
     let id =
       '0x7465737400000000000000000000000000000000000000000000000000000000'
-    let cost = await Discover.functions.downvoteCost(id).call()
+    let cost = await Discover.downvoteCost(id)
     let tokens = parseInt(cost.c, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     let developer = accounts[0]
 
-    let initial = await Discover.functions.dapps(0).call()
-    let bal_before = await SNT.functions.balanceOf(developer).call()
+    let initial = await Discover.dapps(0)
+    let bal_before = await SNT.balanceOf(developer)
 
-    await SNT.functions.generateTokens(accounts[1], amount).send()
-    const encodedCall = Discover.functions.downvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[1] })
+    await SNT.generateTokens(accounts[1], amount).send()
+    const encodedCall = Discover.downvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[1] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
 
     assert.strictEqual(developer, receipt.developer)
     assert.strictEqual(id, receipt.id)
 
     // Check the developer actually receives the SNT!
-    let bal_after = await SNT.functions.balanceOf(developer).call()
+    let bal_after = await SNT.balanceOf(developer)
     let bal_effect = parseInt(bal_after, 10) - parseInt(bal_before, 10)
     assert.strictEqual(Math.round(bal_effect / decimalMultiplier), tokens)
 
@@ -686,24 +717,26 @@ contract('Discover', function() {
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
 
-    let initial = await Discover.functions.dapps(0).call()
-    let before = await SNT.functions.balanceOf(Discover.options.address).call()
-    let up_effect = await Discover.functions.upvoteEffect(id, tokens).call()
+    let initial = await Discover.dapps(0)
+    let before = await SNT.balanceOf(Discover.options.address)
+    let up_effect = await Discover.upvoteEffect(id, tokens)
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions.upvote(id, amount).encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[0] })
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.upvote(id, amount).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[0] })
 
-    let receipt = await Discover.functions.dapps(0).call()
+    let receipt = await Discover.dapps(0)
     let developer = accounts[0]
 
     assert.strictEqual(developer, receipt.developer)
     assert.strictEqual(id, receipt.id)
 
     // Check Discover  actually receives the SNT!
-    let after = await SNT.functions.balanceOf(Discover.options.address).call()
+    let after = await SNT.balanceOf(Discover.options.address)
     let bal_effect = parseInt(after, 10) - parseInt(before, 10)
     assert.strictEqual(Math.round(bal_effect / decimalMultiplier), tokens)
 
@@ -711,8 +744,8 @@ contract('Discover', function() {
     let upvotedBalance = parseInt(initial.balance, 10) + tokens
     assert.strictEqual(upvotedBalance, parseInt(receipt.balance, 10))
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
     let rate = Math.round(decimals - (upvotedBalance * decimals) / max)
     assert.strictEqual(rate, parseInt(receipt.rate, 10))
 
@@ -741,22 +774,26 @@ contract('Discover', function() {
   it('should create a DApp without overflowing', async function() {
     let id =
       '0x0000000000000000000000000000000000000000000000000000000000000001'
-    let safeMax = await Discover.functions.safeMax().call()
+    let safeMax = await Discover.safeMax()
     let tokens = parseInt(safeMax, 10)
     let tokenAmount = new BN(tokens, 10)
     let temp = decimalMultiplier.mul(new BN(tokenAmount, 10))
     let amount = temp.toString()
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFue'
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions
-      .createDApp(id, amount, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
-    await SNT.functions
-      .approveAndCall(Discover.options.address, amount, encodedCall)
-      .send({ from: accounts[0] })
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.createDApp(
+      id,
+      amount,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
+    await SNT.approveAndCall(
+      Discover.options.address,
+      amount,
+      encodedCall,
+    ).send({ from: accounts[0] })
 
-    let receipt = await Discover.functions.dapps(1).call()
+    let receipt = await Discover.dapps(1)
     let developer = accounts[0]
 
     assert.strictEqual(developer, receipt.developer)
@@ -765,8 +802,8 @@ contract('Discover', function() {
     // Having received the SNT, check that it updates the particular DApp's storage values
     assert.strictEqual(tokens, parseInt(receipt.balance, 10))
 
-    let max = await Discover.functions.max().call()
-    let decimals = await Discover.functions.decimals().call()
+    let max = await Discover.max()
+    let decimals = await Discover.decimals()
     let rate = Math.ceil(decimals - (tokens * decimals) / max)
     assert.strictEqual(rate, parseInt(receipt.rate, 10))
 
@@ -786,7 +823,7 @@ contract('Discover', function() {
   it("should prove we have the highest safeMax allowed for by Bancor's power approximation", async function() {
     let id =
       '0x0000000000000000000000000000000000000000000000000000000000000002'
-    let max = await Discover.functions.max().call()
+    let max = await Discover.max()
     // Choose a safeMax 1% higher than is currently set
     let percent = 78 / 100
     let tokens = Math.round(parseInt(max, 10) * percent)
@@ -795,21 +832,25 @@ contract('Discover', function() {
     let amount = temp.toString()
     let metadata = 'QmSmv5e5DYc2otwWcpUzuqmt389s3HHx651TbxDvKBFFue'
 
-    await SNT.functions.generateTokens(accounts[0], amount).send()
-    const encodedCall = Discover.functions
-      .createDApp(id, amount, TestUtils.getBytes32FromIpfsHash(metadata))
-      .encodeABI()
+    await SNT.generateTokens(accounts[0], amount).send()
+    const encodedCall = Discover.createDApp(
+      id,
+      amount,
+      TestUtils.getBytes32FromIpfsHash(metadata),
+    ).encodeABI()
 
     // Comment this try/catch block out to test the safeMax
     try {
-      await SNT.functions
-        .approveAndCall(Discover.options.address, amount, encodedCall)
-        .send({ from: accounts[0] })
+      await SNT.approveAndCall(
+        Discover.options.address,
+        amount,
+        encodedCall,
+      ).send({ from: accounts[0] })
     } catch (error) {
       TestUtils.assertJump(error)
     }
 
     // Uncomment the next line to check this test. Change percent to 77 or 76 to see it pass.
-    // await SNT.functions.approveAndCall(Discover.options.address, amount, encodedCall).send({ from: accounts[0] });
+    // await SNT.approveAndCall(Discover.options.address, amount, encodedCall).send({ from: accounts[0] });
   })
 })

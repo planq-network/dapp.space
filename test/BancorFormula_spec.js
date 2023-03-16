@@ -45,9 +45,7 @@ contract('TestBancorFormula', function() {
     )}, ${expN}, ${expD})`
 
     it(`${test}:`, async () => {
-      await TestBancorFormula.functions
-        .powerTest(baseN, baseD, expN, expD)
-        .call()
+      await TestBancorFormula.powerTest(baseN, baseD, expN, expD)
     })
   }
 
@@ -61,9 +59,7 @@ contract('TestBancorFormula', function() {
     )}, ${expN}, ${expD})`
 
     it(`${test}:`, async () => {
-      await TestBancorFormula.functions
-        .powerTest(baseN, baseD, expN, expD)
-        .call()
+      await TestBancorFormula.powerTest(baseN, baseD, expN, expD)
     })
   }
 
@@ -78,15 +74,9 @@ contract('TestBancorFormula', function() {
 
     it(`${test}:`, async () => {
       if (percent < 64)
-        await TestBancorFormula.functions
-          .powerTest(baseN, baseD, expN, expD)
-          .call()
+        await TestBancorFormula.powerTest(baseN, baseD, expN, expD)
       else
-        await catchRevert(
-          TestBancorFormula.functions
-            .powerTest(baseN, baseD, expN, expD)
-            .call(),
-        )
+        await catchRevert(TestBancorFormula.powerTest(baseN, baseD, expN, expD))
     })
   }
 
@@ -100,9 +90,7 @@ contract('TestBancorFormula', function() {
     )}, ${expN}, ${expD})`
 
     it(`${test}:`, async () => {
-      await catchRevert(
-        TestBancorFormula.functions.powerTest(baseN, baseD, expN, expD).call(),
-      )
+      await catchRevert(TestBancorFormula.powerTest(baseN, baseD, expN, expD))
     })
   }
 
@@ -120,9 +108,8 @@ contract('TestBancorFormula', function() {
     it(`${test}:`, async () => {
       try {
         let temp = web3.utils.toHex(values[index])
-        let retVal = await TestBancorFormula.functions
-          .generalLogTest(temp)
-          .call()
+        let retVal = await TestBancorFormula.generalLogTest(temp)
+
         let check = new BigNumber(parseInt(retVal, 10) * MAX_EXPONENT)
         assert(check.isLessThan(ILLEGAL_VAL), `${test}: output is too large`)
       } catch (error) {
@@ -182,14 +169,13 @@ contract('TestBancorFormula', function() {
           output.isLessThan(BigNumber(precision))
         ) {
           await catchRevert(
-            TestBancorFormula.functions
-              .findPositionInMaxExpArrayTest(input)
-              .call(),
+            TestBancorFormula.findPositionInMaxExpArrayTest(input),
           )
         } else {
-          let temp = await TestBancorFormula.functions
-            .findPositionInMaxExpArrayTest(input)
-            .call()
+          let temp = await TestBancorFormula.findPositionInMaxExpArrayTest(
+            input,
+          )
+
           let retVal = new BigNumber(temp)
           assert(
             retVal.isEqualTo(output),
@@ -216,17 +202,15 @@ contract('TestBancorFormula', function() {
     let test2 = `Function generalExp(0x${errExp.toString(16)}, ${precision})`
 
     it(`${test1}:`, async () => {
-      let temp = await TestBancorFormula.functions
-        .generalExpTest(maxExpi, precision)
-        .call()
+      let temp = await TestBancorFormula.generalExpTest(maxExpi, precision)
+
       let retVal = new BigNumber(temp)
       assert(retVal.isEqualTo(maxVal), `${test1}: output is wrong`)
     })
 
     it(`${test2}:`, async () => {
-      let temp = await TestBancorFormula.functions
-        .generalExpTest(errExpi, precision)
-        .call()
+      let temp = await TestBancorFormula.generalExpTest(errExpi, precision)
+
       let retVal = new BigNumber(temp)
       assert(
         retVal.isLessThan(maxVal),
@@ -246,9 +230,8 @@ contract('TestBancorFormula', function() {
     let test = `Function generalExp(0x${minExp.toString(16)}, ${precision})`
 
     it(`${test}:`, async () => {
-      let temp = await TestBancorFormula.functions
-        .generalExpTest(minExpi, precision)
-        .call()
+      let temp = await TestBancorFormula.generalExpTest(minExpi, precision)
+
       let retVal = new BigNumber(temp)
       assert(
         retVal.isGreaterThanOrEqualTo(minVal),
@@ -276,7 +259,7 @@ contract('TestBancorFormula', function() {
       let test = `Function floorLog2(0x${input.toString(16)})`
 
       it(`${test}:`, async () => {
-        let temp = await TestBancorFormula.functions.floorLog2Test(input).call()
+        let temp = await TestBancorFormula.floorLog2Test(input)
         let retVal = new BigNumber(temp)
         assert(
           retVal.isEqualTo(output),
@@ -307,7 +290,7 @@ contract('TestBancorFormula', function() {
     it(`Function optimalLog(${x.toFixed()})`, async () => {
       try {
         let tmp = web3.utils.toHex(FIXED_1.times(x).integerValue())
-        let temp = await TestBancorFormula.functions.optimalLogTest(tmp).call()
+        let temp = await TestBancorFormula.optimalLogTest(tmp)
         let fixedPoint = new BigNumber(temp)
         let floatPoint = new BigNumber(
           Decimal(x.toFixed())
@@ -339,7 +322,7 @@ contract('TestBancorFormula', function() {
     it(`Function optimalExp(${x.toFixed()})`, async () => {
       try {
         let tmp = web3.utils.toHex(FIXED_1.times(x).integerValue())
-        let temp = await TestBancorFormula.functions.optimalExpTest(tmp).call()
+        let temp = await TestBancorFormula.optimalExpTest(tmp)
         let fixedPoint = new BigNumber(temp)
         let floatPoint = new BigNumber(
           Decimal(x.toFixed())
@@ -376,9 +359,8 @@ contract('TestBancorFormula', function() {
       it(`Function generalLog(${x.toFixed()})`, async () => {
         try {
           let tmp = web3.utils.toHex(FIXED_1.times(x).integerValue())
-          let temp = await TestBancorFormula.functions
-            .generalLogTest(tmp)
-            .call()
+          let temp = await TestBancorFormula.generalLogTest(tmp)
+
           let fixedPoint = new BigNumber(temp)
           let floatPoint = new BigNumber(
             Decimal(x.toFixed())
