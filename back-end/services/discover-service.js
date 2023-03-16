@@ -7,13 +7,9 @@ const ACCOUNT = '0x0000000000000000000000000000000000000000'
 class DiscoverService {
   static async retrieveDApp(id) {
     try {
-      const dappIndex = await DiscoverContract.functions
-        .id2index(id)
-        .call({ from: ACCOUNT })
+      const dappIndex = await DiscoverContract.id2index(id)
 
-      const dapp = await DiscoverContract.functions
-        .dapps(dappIndex)
-        .call({ from: ACCOUNT })
+      const dapp = await DiscoverContract.dapps(dappIndex)
 
       if (dapp.id != id) {
         throw new Error('Error fetching correct data from contract')
