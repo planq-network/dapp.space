@@ -318,6 +318,7 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
         bytes calldata _extraData
     )
         external
+        payable
         returns (bool success)
     {
         require(doApprove(msg.sender, _spender, _amount));

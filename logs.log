@@ -2,3 +2,153 @@
 
 [2023-03-15 16:07:46]-[ERROR]-[DApps-Metadata-Controller]: Method POST not allowed: read only access
 
+[2023-03-15 16:16:57]-[ERROR]-[DApps-Metadata-Controller]: Method POST not allowed: read only access
+
+[2023-03-15 17:23:45]-[ERROR]-[DApps-Metadata-Controller]: Method POST not allowed: read only access
+
+[2023-03-15 17:29:02]-[ERROR]-[DApps-Metadata-Controller]: Method POST not allowed: read only access
+
+[2023-03-15 17:33:29]-[ERROR]-[DApps-Metadata-Controller]: Method POST not allowed: read only access
+
+[2023-03-15 17:36:23]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 17:38:09]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:05:16]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:06:44]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:08:24]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:12:24]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:15:41]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:21:49]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:25:53]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:27:34]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:30:35]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:31:35]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:32:21]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:33:00]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:34:29]-[INFO]-[DApps-Metadata-Controller]: if
+[2023-03-15 18:34:30]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+fefefefe
+[2023-03-15 18:35:59]-[INFO]-[DApps-Metadata-Controller]: if
+[2023-03-15 18:36:00]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:36:31]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:37:37]-[ERROR]-[DApps-Metadata-Controller]: logger is not defined
+[2023-03-15 18:38:20]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-15 18:40:36]-[ERROR]-[DApps-Metadata-Controller]: 404 page not found
+
+[2023-03-16 14:22:01]-[ERROR]-[DApps-Metadata-Controller]: Not Found
+[2023-03-16 16:25:32]-[ERROR]-[DApps-Metadata-Controller]: Cannot read properties of undefined (reading 'hash')
+[2023-03-16 16:37:02]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:37:02]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmYQuHurHhQexABhUpk1YY79ujTzoYpugBzuVMwYYbqUuY
+[2023-03-16 16:37:02]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmYQuHurHhQexABhUpk1YY79ujTzoYpugBzuVMwYYbqUuY] has been uploaded successfully
+[2023-03-16 16:53:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:53:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:53:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXBsvcCPj5AhqfcpzqGnEAce937u3HTe8mdfDKA6pMkjy
+[2023-03-16 16:53:03]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmXBsvcCPj5AhqfcpzqGnEAce937u3HTe8mdfDKA6pMkjy] has been uploaded successfully
+[2023-03-16 16:55:45]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:55:45]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:55:45]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXBsvcCPj5AhqfcpzqGnEAce937u3HTe8mdfDKA6pMkjy
+[2023-03-16 16:55:45]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXBsvcCPj5AhqfcpzqGnEAce937u3HTe8mdfDKA6pMkjy
+[2023-03-16 16:55:45]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmXBsvcCPj5AhqfcpzqGnEAce937u3HTe8mdfDKA6pMkjy] has been uploaded successfully
+[2023-03-16 16:56:35]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:56:35]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 16:56:35]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 16:56:35]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV] has been uploaded successfully
+[2023-03-16 17:33:18]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:33:18]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:33:19]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:33:19]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:33:19]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV] has been uploaded successfully
+[2023-03-16 17:37:50]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:37:50]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:37:50]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:37:50]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:37:50]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV] has been uploaded successfully
+[2023-03-16 17:38:05]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:38:05]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:38:05]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:38:05]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV
+[2023-03-16 17:38:05]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [Qmc2rjsbA1o5jfNRQJbA6ZMBawo8PndazTwfBzknXuqFjV] has been uploaded successfully
+[2023-03-16 17:38:52]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:38:53]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:38:53]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmdsmFjmh1tLEdvbChhKa1jAQCDFmhy5WPVMoKMr2mkGMu
+[2023-03-16 17:38:53]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmdsmFjmh1tLEdvbChhKa1jAQCDFmhy5WPVMoKMr2mkGMu] has been uploaded successfully
+[2023-03-16 17:57:58]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:57:58]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:57:58]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXmvHseZnk4N3aT1f8E7bMQxuMXhJqqUkqev8xbYiTGTW
+[2023-03-16 17:57:58]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmXmvHseZnk4N3aT1f8E7bMQxuMXhJqqUkqev8xbYiTGTW] has been uploaded successfully
+[2023-03-16 17:59:35]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:59:35]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 17:59:36]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXHvUbATTrkGbM1bDNBcTcwn2fmKnABSpXK9qZaYkuhLW
+[2023-03-16 17:59:36]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmXHvUbATTrkGbM1bDNBcTcwn2fmKnABSpXK9qZaYkuhLW] has been uploaded successfully
+[2023-03-16 18:01:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:01:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:01:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmXgSr9KguHCsVTWovvHjmREswXVrtV3qErSNKGXr1MCUE
+[2023-03-16 18:01:03]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmXgSr9KguHCsVTWovvHjmREswXVrtV3qErSNKGXr1MCUE] has been uploaded successfully
+[2023-03-16 18:01:31]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:01:31]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:01:31]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmWSa5KDwikC6BgRoH1JoUS42878j6Lv5sJswAys9vGGsd
+[2023-03-16 18:01:31]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmWSa5KDwikC6BgRoH1JoUS42878j6Lv5sJswAys9vGGsd] has been uploaded successfully
+[2023-03-16 18:03:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:03:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:03:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmbFBAMzN6M7UJrxpqu41t94jpriEjKM6ceVo9TgNPKpmD
+[2023-03-16 18:03:32]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmbFBAMzN6M7UJrxpqu41t94jpriEjKM6ceVo9TgNPKpmD] has been uploaded successfully
+[2023-03-16 18:05:53]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:05:53]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:05:53]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmRPTjAYvj96qV5Mjz79LqXd4jyq3Yn86W9PADm3KfR4Ke
+[2023-03-16 18:05:53]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmRPTjAYvj96qV5Mjz79LqXd4jyq3Yn86W9PADm3KfR4Ke] has been uploaded successfully
+[2023-03-16 18:08:16]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:08:16]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:08:17]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmdQa5rhR74RomxEakTCx8MZDMn8hRLq6EFE3iYJDeARzD
+[2023-03-16 18:08:17]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmdQa5rhR74RomxEakTCx8MZDMn8hRLq6EFE3iYJDeARzD] has been uploaded successfully
+[2023-03-16 18:34:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:34:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:34:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmZy5AbP5Ppsw95G2i3dfcgap9emiEEXnAvrUAsof21ZkW
+[2023-03-16 18:34:27]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmZy5AbP5Ppsw95G2i3dfcgap9emiEEXnAvrUAsof21ZkW] has been uploaded successfully
+[2023-03-16 18:42:28]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:42:28]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:42:29]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmT1o1DGNnnMLBiJQ6ajD9WJmGSmmvUbzj2YEYzQowWUnm
+[2023-03-16 18:42:29]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmT1o1DGNnnMLBiJQ6ajD9WJmGSmmvUbzj2YEYzQowWUnm] has been uploaded successfully
+[2023-03-16 18:43:42]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:43:42]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 18:43:43]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: Qmdsjc1A162a25dR4vao9CH4WUS9syUzNAP2kYcH35vWWm
+[2023-03-16 18:43:43]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [Qmdsjc1A162a25dR4vao9CH4WUS9syUzNAP2kYcH35vWWm] has been uploaded successfully
+[2023-03-16 19:08:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:08:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:08:03]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmcwfMwgQhZMp1Ufv9xuNmTWfKXC2g7so99e4R1jqoZ6Pw
+[2023-03-16 19:08:03]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmcwfMwgQhZMp1Ufv9xuNmTWfKXC2g7so99e4R1jqoZ6Pw] has been uploaded successfully
+[2023-03-16 19:10:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:10:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:10:32]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmUM6czvuvB7Bf1z9SH2Bhg1GBhxbVko3UFNGh7FHZzpWv
+[2023-03-16 19:10:32]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmUM6czvuvB7Bf1z9SH2Bhg1GBhxbVko3UFNGh7FHZzpWv] has been uploaded successfully
+[2023-03-16 19:18:04]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:18:04]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-16 19:18:04]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmRNuURv6m29RMkKAprUSanYyY5fSsoZCkfTmpG25Winpd
+[2023-03-16 19:18:04]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmRNuURv6m29RMkKAprUSanYyY5fSsoZCkfTmpG25Winpd] has been uploaded successfully
+[2023-03-20 15:53:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 15:53:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 15:53:27]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmUtj252huV6HoBt6CEZ21oSWsvHV1u87JCU9f2JTbZz5Y
+[2023-03-20 15:53:27]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmUtj252huV6HoBt6CEZ21oSWsvHV1u87JCU9f2JTbZz5Y] has been uploaded successfully
+[2023-03-20 16:26:17]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 16:26:17]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 16:26:18]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmWZcPaeo9ErHAdkjQ9MnX3ZU6oaFCVPMRRsPtUkQp71DY
+[2023-03-20 16:26:18]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmWZcPaeo9ErHAdkjQ9MnX3ZU6oaFCVPMRRsPtUkQp71DY] has been uploaded successfully
+[2023-03-20 17:54:56]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 17:54:56]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmTtCrAzzmuX9Lkaths8DcNa6vvQsyCmWJQneSH2M2kyqT
+[2023-03-20 17:54:57]-[INFO]-[IPFS-Service]: Content uploaded to IPFS: QmdbTN42sVZPUVAy3DRyRBCb84FfyUKXma9EfciFw4Gpgx
+[2023-03-20 17:54:57]-[INFO]-[DApps-Metadata-Controller]: A dapp metadata with hash [QmdbTN42sVZPUVAy3DRyRBCb84FfyUKXma9EfciFw4Gpgx] has been uploaded successfully

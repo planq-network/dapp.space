@@ -20,6 +20,7 @@ contract MiniMeTokenInterface is ERC20Token {
         bytes calldata _extraData
     )
         external
+        payable
         returns (bool success);
 
     /**
