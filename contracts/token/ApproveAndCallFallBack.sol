@@ -6,5 +6,5 @@ contract ApproveAndCallFallBack {
         address from,
         uint256 _amount,
         address _token,
-        bytes calldata _data) external payable;
+        bytes calldata _data) external;
 }

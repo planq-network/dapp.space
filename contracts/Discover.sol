@@ -84,7 +84,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
      * @param _amount of tokens to stake on initial ranking.
      * @param _metadata metadata hex string
      */
-    function createDApp(bytes32 _id, uint _amount, bytes32 _metadata) external payable {
+    function createDApp(bytes32 _id, uint _amount, bytes32 _metadata) external {
         _createDApp(
             msg.sender,
             _id,
@@ -97,7 +97,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
      * @param _id bytes32 unique identifier.
      * @param _amount of tokens to stake on DApp's ranking. Used for upvoting + staking more.
      */
-    function upvote(bytes32 _id, uint _amount) external payable {
+    function upvote(bytes32 _id, uint _amount) external {
         _upvote(msg.sender, _id, _amount);
     }
 
@@ -106,7 +106,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
      * @param _id bytes32 unique identifier.
      * @param _amount uint, included for approveAndCallFallBack
      */
-    function downvote(bytes32 _id, uint _amount) external payable {
+    function downvote(bytes32 _id, uint _amount) external {
         _downvote(msg.sender, _id, _amount);
     }
 
@@ -161,7 +161,6 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         d.effectiveBalance = d.balance.sub(effect);
 
         require(SNT.transfer(d.developer, _amount), "Transfer failed");
-        SNT.withdraw(_amount);
         emit Withdraw(_id, d.effectiveBalance);
     }
 
@@ -199,7 +198,7 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         address _token,
         bytes calldata _data
     )
-        external payable
+        external
     {
         require(_token == address(SNT), "Wrong token");
         require(_token == address(msg.sender), "Wrong account");
@@ -321,7 +320,6 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         id2index[_id] = dappIdx;
         existingIDs[_id] = true;
 
-        SNT.deposit();
         require(SNT.transferFrom(_from, address(this), _amount), "Transfer failed");
         emit DAppCreated(_id, d.effectiveBalance);
     }
@@ -354,7 +352,6 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         uint effect = temp1.div(temp2);
 
         d.effectiveBalance = d.balance.sub(effect);
-        SNT.deposit();
         require(SNT.transferFrom(_from, address(this), _amount), "Transfer failed");
 
         emit Upvote(_id, d.effectiveBalance);
@@ -371,7 +368,6 @@ contract Discover is Controlled, ApproveAndCallFallBack, BancorFormula {
         d.votesCast = d.votesCast.add(vR);
         d.effectiveBalance = d.effectiveBalance.sub(b);
 
-        SNT.deposit();
         require(SNT.transferFrom(_from, d.developer, _amount), "Transfer failed");
 
         emit Downvote(_id, d.effectiveBalance);
