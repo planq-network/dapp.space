@@ -1,4 +1,5 @@
 import bs58 from 'bs58'
+import { Buffer } from 'buffer'
 
 export const base64ToBlob = base64Text => {
   const byteString = atob(base64Text.split(',')[1])
@@ -21,8 +22,8 @@ export const getBytes32FromIpfsHash = ipfsListing => {
 }
 
 export const getIpfsHashFromBytes32 = bytes32Hex => {
-  const hashHex = `1220${bytes32Hex.slice(2)}`
-  const hashBytes = Buffer.from(hashHex, 'hex')
+  const hashHex = `18,32,${bytes32Hex.slice(2)}`.split(',')
+  const hashBytes = Buffer.from(hashHex)
   const hashStr = bs58.encode(hashBytes)
   return hashStr
 }
