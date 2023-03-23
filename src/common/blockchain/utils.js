@@ -39,7 +39,7 @@ export default {
 
 const checkNetwork = async () => {
   const networkId = await window.ethereum.networkVersion
-  return networkId !== 1
+  return networkId !== 7070
 }
 
 export { checkNetwork }
