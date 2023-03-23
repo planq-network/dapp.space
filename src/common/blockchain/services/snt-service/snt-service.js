@@ -12,7 +12,7 @@ class SNTService extends BlockchainService {
   constructor(sharedContext) {
     super(
       sharedContext,
-      '0xf62fd7E2FBe9E610205e4b1B1393d041Bc05f77A',
+      '0xa2dd72048C2bDc826c827a72c5C94c9a2ff8f7eB',
       MiniMeTokenArtifact.abi,
       SNTValidator,
     )
@@ -39,9 +39,16 @@ class SNTService extends BlockchainService {
     const ConnectedSNTToken = await super.__unlockServiceAccount(SNTToken)
     console.log('approveAndCall SNT-Service')
     await this.validator.validateApproveAndCall(spender, amount)
-    return broadcastContractFn(
-      ConnectedSNTToken.approveAndCall(spender, amount.toString(), callData),
-      this.sharedContext.account,
+
+    let tx = await ConnectedSNTToken.deposit({
+      value: amount.toString(),
+    })
+    let receipt = await tx.wait()
+
+    return await ConnectedSNTToken.approveAndCall(
+      spender,
+      amount.toString(),
+      callData,
     )
   }
 }
