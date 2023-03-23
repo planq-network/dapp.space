@@ -29,9 +29,9 @@ class MetadataClient {
   static async requestApproval(metadataBytes32) {
     try {
       const ipfsHash = helpers.getIpfsHashFromBytes32(metadataBytes32)
-      await HTTPClient.postRequest(`/metadata/approve/email/${ipfsHash}`)
+      await HTTPClient.postRequest(`/metadata/approve/email/${ipfsHash}`, {})
     } catch (error) {
-      throw new Error('No DApp was found for approval')
+      throw new Error(`No DApp was found for approval.`)
     }
   }
 

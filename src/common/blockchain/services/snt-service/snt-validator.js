@@ -6,11 +6,9 @@ class SNTValidator {
   }
 
   async validateSNTTransferFrom(amount) {
-    const toBalance = await this.service.balanceOf(
+    const toBalanceBN = await this.service._provider.getBalance(
       this.service.sharedContext.account,
     )
-
-    const toBalanceBN = new ethers.BigNumber.from(toBalance)
 
     if (amount.gt(toBalanceBN)) {
       throw new Error('Not enough PLQ balance')
