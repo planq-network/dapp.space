@@ -12,7 +12,7 @@ class BlockchainService {
       address,
       abi,
       // eslint-disable-next-line no-underscore-dangle
-      this._provider.getSigner(0),
+      this._provider,
     )
     this.contract = this.contractRaw.address
     this.sharedContext = sharedContext
@@ -21,7 +21,7 @@ class BlockchainService {
 
   async getAccount() {
     try {
-      if (web3 && ethers.providers.Web3Provider) {
+      if (web3 && this._provider) {
         const account = (
           await window.ethereum.request({ method: 'eth_requestAccounts' })
         )[0]
