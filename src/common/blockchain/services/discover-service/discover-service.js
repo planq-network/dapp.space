@@ -247,11 +247,11 @@ class DiscoverService extends BlockchainService {
     )
 
     await this.validator.validateUpVoting(id, tokenAmount)
+    let callData
+    let iface = new ethers.utils.Interface(DiscoverArtifact.abi)
 
-    const callData = DiscoverContract.upvote(
-      id,
-      tokenAmount.toString(),
-    ).encodeABI()
+    callData = iface.encodeFunctionData('upvote', [id, tokenAmount.toString()])
+
     return this.sharedContext.SNTService.approveAndCall(
       this.contract,
       tokenAmount,
@@ -266,11 +266,14 @@ class DiscoverService extends BlockchainService {
     const amountBN = ethers.BigNumber.from(amount)
 
     const tokenAmount = this.decimalMultiplier.mul(amountBN)
+    let callData
+    let iface = new ethers.utils.Interface(DiscoverArtifact.abi)
 
-    const callData = DiscoverContract.downvote(
+    callData = iface.encodeFunctionData('downvote', [
       dapp.id,
       tokenAmount.toString(),
-    ).encodeABI()
+    ])
+
     return this.sharedContext.SNTService.approveAndCall(
       this.contract,
       tokenAmount,
@@ -289,10 +292,7 @@ class DiscoverService extends BlockchainService {
     await this.validator.validateWithdrawing(id, tokenAmount)
 
     try {
-      return broadcastContractFn(
-        ConnectedDiscoverContract.withdraw(id, tokenAmount.toString()),
-        this.sharedContext.account,
-      )
+      await ConnectedDiscoverContract.withdraw(id, tokenAmount.toString())
     } catch (error) {
       throw new Error(`Transfer on withdraw failed. Details: ${error.message}`)
     }
@@ -310,11 +310,8 @@ class DiscoverService extends BlockchainService {
     const uploadedMetadata = await MetadataClient.upload(dappMetadata, email)
 
     try {
-      const tx = await broadcastContractFn(
-        ConnectedDiscoverContract.setMetadata(id, uploadedMetadata),
-        this.sharedContext.account,
-      )
-
+      const tx = await ConnectedDiscoverContract.setMetadata(id, uploadedMetadata)
+      let receipt = await tx.wait()
       // TODO: This results in endless "Waiting for confirmation... errors, though the tx is successful"
       await MetadataClient.update(id, tx)
 
@@ -326,9 +323,7 @@ class DiscoverService extends BlockchainService {
 
   async withdrawMax(dappId) {
     const decimals = 1000000
-    const draw = await DiscoverContract.withdrawMax(dappId).call({
-      from: this.sharedContext.account,
-    })
+    const draw = await DiscoverContract.withdrawMax(dappId)
     const withdraw = parseInt(draw, 10)
     return Math.floor(withdraw / decimals)
   }
