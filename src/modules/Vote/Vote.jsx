@@ -113,13 +113,15 @@ class Vote extends Component {
                 >
                   ↑ UPVOTE
                 </button>
-                <button
-                  className={!isUpvote ? styles.active : ''}
-                  type="button"
-                  onClick={this.onClickDownvote}
-                >
-                  ↓ DOWNVOTE
-                </button>
+                {currentPLQamount > 0 && (
+                  <button
+                    className={!isUpvote ? styles.active : ''}
+                    type="button"
+                    onClick={this.onClickDownvote}
+                  >
+                    ↓ DOWNVOTE
+                  </button>
+                )}
               </div>
               <div className={styles.content}>
                 <div className={styles.dapp}>
