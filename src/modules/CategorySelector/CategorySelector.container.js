@@ -9,7 +9,7 @@ const mapStateToProps = state => ({ category: state.selectedCategory })
 const mapDispatchToProps = dispatch => ({
   select: category => {
     dispatch(push(`/categories/${category}`))
-    dispatch(selectCategory(category))
+    //dispatch(selectCategory(category))
   },
   onClickSubmit: () => dispatch(showHowToSubmitAction()),
   onClickCloseDesktopMenu: () => dispatch(closeDesktopAction()),

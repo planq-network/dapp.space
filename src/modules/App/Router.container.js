@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from '../../common/utils/router'
+import { withRouter } from 'react-router-dom'
 import Router from './Router'
 import { fetchAllDappsAction } from '../Dapps/Dapps.reducer'
 
