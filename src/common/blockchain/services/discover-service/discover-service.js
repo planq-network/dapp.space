@@ -205,9 +205,6 @@ class DiscoverService extends BlockchainService {
     const tokenAmount = this.decimalMultiplier.mul(
       ethers.BigNumber.from(amount),
     )
-    const ConnectedDiscoverContract = await super.__unlockServiceAccount(
-      DiscoverContract,
-    )
 
     const dappMetadata = JSON.parse(JSON.stringify(metadata))
     dappMetadata.uploader = this.sharedContext.account
@@ -223,28 +220,22 @@ class DiscoverService extends BlockchainService {
     let createdTx = undefined
 
     if (tokenAmount.gt(ethers.BigNumber.from(0))) {
-      let callData /* = ConnectedDiscoverContract.createDApp(
-        dappId,
-        tokenAmount.toString(),
-        uploadedMetadata,
-      ).encodeABI()*/
-      console.log('this works-1')
+      let callData
       let iface = new ethers.utils.Interface(DiscoverArtifact.abi)
-      console.log('this works0')
+
       callData = iface.encodeFunctionData('createDApp', [
         dappId,
         tokenAmount.toString(),
         uploadedMetadata,
       ])
-      console.log('this works1')
+
       createdTx = await this.sharedContext.SNTService.approveAndCall(
         this.contract,
         tokenAmount,
         callData,
       )
-      console.log('this works2')
     }
-    console.log('this works3')
+
     await MetadataClient.requestApproval(uploadedMetadata)
 
     return { tx: createdTx, id: dappId }
