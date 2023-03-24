@@ -26,7 +26,7 @@
 
 .tabs {
   width: 100%;
-  border-bottom: 1px solid #eef2f5;
+  border-bottom: 1px solid $link-color;
   text-align: center;
   flex: 0;
 }
@@ -145,7 +145,6 @@
 }
 
 .inputArea {
-  width: calc(100% - 2 * 16px);
   height: 64px;
   display: flex;
   align-items: center;
@@ -156,7 +155,7 @@
 }
 
 .inputArea.inputAreaBorder {
-  border-bottom: 1px solid #eef2f5;
+  border-bottom: 1px solid $link-color;
 }
 
 .inputArea input {
@@ -168,6 +167,7 @@
   font-family: $font;
   caret-color: $link-color;
   margin-right: calculateRem(6);
+  background: inherit;
 }
 
 input::placeholder {
@@ -181,7 +181,7 @@ input::placeholder {
 .inputArea::after {
   transition: all 0.05s ease-in-out;
   content: 'PLQ';
-  color: #878e94;
+  color: inherit;
   font-size: calculateRem(32);
   line-height: calculateRem(28);
   font-family: $font;
@@ -197,7 +197,7 @@ input::placeholder {
 .footer {
   text-align: center;
   flex: 0;
-  border-top: 1px solid #eef2f5;
+  border-top: 1px solid $link-color;
   height: calculateRem(64);
 }
 
@@ -221,7 +221,7 @@ input::placeholder {
 
 .disclaimer {
   font-size: calculateRem(15);
-  color: $text-color;
+  color: $background;
   line-height: 22px;
   font-family: $font;
   padding: calculateRem(16);
