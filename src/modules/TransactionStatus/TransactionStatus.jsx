@@ -56,12 +56,12 @@ class TransactionStatus extends React.Component {
           {progress && (
             <div className={styles.status}>
               <img src={loadingSpinner} alt="Loading..." />
-              Waiting for confirmation from Ethereum...
+              Waiting for confirmation from Planq...
             </div>
           )}
           {failed && (
             <div className={`${styles.status} ${styles.red} ${styles.column}`}>
-              Transaction failed. Please check EtherScan for tx:{' '}
+              Transaction failed. Please check the block-explorer for tx:{' '}
               <span>{dappTx}</span>
             </div>
           )}
