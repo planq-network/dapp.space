@@ -7,6 +7,7 @@ class BlockchainService {
     //this.contract = address.address
     // eslint-disable-next-line no-underscore-dangle
     this._provider = new ethers.providers.Web3Provider(window.ethereum)
+    this.checkNetwork()
     this.abi = abi
     this.contractRaw = new ethers.Contract(
       address,
@@ -36,6 +37,29 @@ class BlockchainService {
       throw new Error(
         'Could not unlock an account. Consider installing Status on your mobile or Metamask extension',
       )
+    }
+  }
+
+  async checkNetwork() {
+    const currentNetworkId = await this._provider.getNetwork()
+
+    if (currentNetworkId.chainId != '7070') {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: '0x1B9E',
+            rpcUrls: ['https://evm-rpc.planq.network/'],
+            chainName: 'Planq Network',
+            nativeCurrency: {
+              name: 'Planq',
+              symbol: 'PLQ',
+              decimals: 18,
+            },
+            blockExplorerUrls: ['https://evm.planq.network/'],
+          },
+        ],
+      })
     }
   }
 
