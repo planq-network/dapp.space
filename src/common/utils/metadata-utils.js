@@ -14,16 +14,14 @@ export const base64ToBlob = base64Text => {
 }
 
 export const getBytes32FromIpfsHash = ipfsListing => {
-  const decodedHash = bs58
-    .decode(ipfsListing)
-    .slice(2)
-    .toString('hex')
+  let decodedHash = bs58.decode(ipfsListing).slice(2)
+  decodedHash = Buffer.from(decodedHash).toString('hex')
   return `0x${decodedHash}`
 }
 
 export const getIpfsHashFromBytes32 = bytes32Hex => {
-  const hashHex = `18,32,${bytes32Hex.slice(2)}`.split(',')
-  const hashBytes = Buffer.from(hashHex)
+  const hashHex = `1220${bytes32Hex.slice(2)}`
+  const hashBytes = Buffer.from(hashHex, 'hex')
   const hashStr = bs58.encode(hashBytes)
   return hashStr
 }
