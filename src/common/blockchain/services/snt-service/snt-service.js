@@ -20,19 +20,19 @@ class SNTService extends BlockchainService {
   }
 
   async allowance(from, to) {
-    return SNTToken.allowance(from, to)
+    return this.contractRaw.allowance(from, to)
   }
 
   async balanceOf(account) {
-    return SNTToken.balanceOf(account)
+    return this.contractRaw.balanceOf(account)
   }
 
   async controller() {
-    return SNTToken.controller()
+    return this.contractRaw.controller()
   }
 
   async transferable() {
-    return SNTToken.transfersEnabled()
+    return this.contractRaw.transfersEnabled()
   }
 
   async approveAndCall(spender, amount, callData) {

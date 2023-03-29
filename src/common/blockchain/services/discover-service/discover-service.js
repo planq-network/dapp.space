@@ -42,12 +42,12 @@ class DiscoverService extends BlockchainService {
     const tokenAmount = ethers.BigNumber.from(amount)
     await this.validator.validateUpVoteEffect(id, tokenAmount)
 
-    return DiscoverContract.upvoteEffect(id, tokenAmount.toString())
+    return this.contractRaw.upvoteEffect(id, tokenAmount.toString())
   }
 
   async downVoteCost(id) {
     const dapp = await this.getDAppById(id)
-    return DiscoverContract.downvoteCost(dapp.id)
+    return this.contractRaw.downvoteCost(dapp.id)
   }
 
   async getDAppsCount() {
@@ -79,7 +79,7 @@ class DiscoverService extends BlockchainService {
 
   async getAllDappsWithoutMetadata() {
     try {
-      const contractDappsCount = await DiscoverContract.getDAppsCount()
+      const contractDappsCount = await this.contractRaw.getDAppsCount()
 
       const dappsCache = JSON.parse(
         JSON.stringify(await MetadataClient.retrieveMetadataCache()),
@@ -97,7 +97,7 @@ class DiscoverService extends BlockchainService {
 
   async getAllDappsWithMetadata() {
     try {
-      const contractDappsCount = await DiscoverContract.getDAppsCount()
+      const contractDappsCount = await this.contractRaw.getDAppsCount()
 
       const dappsCache = JSON.parse(
         JSON.stringify(await MetadataClient.retrieveMetadataCache()),
@@ -105,7 +105,7 @@ class DiscoverService extends BlockchainService {
 
       let asyncCalls = []
       for (let i = 0; i < contractDappsCount; i++) {
-        asyncCalls.push(DiscoverContract.dapps(i))
+        asyncCalls.push(this.contractRaw.dapps(i))
       }
       let dapps = []
       /* using Promise.all() to run calls in parallel */
@@ -132,7 +132,7 @@ class DiscoverService extends BlockchainService {
 
   async getDAppByIndexWithMetadata(index) {
     try {
-      const dapp = await DiscoverContract.dapps(index)
+      const dapp = await this.contractRaw.dapps(index)
 
       const dappMetadata = await MetadataClient.retrieveDAppFromCache(
         dapp.metadata,
@@ -153,9 +153,8 @@ class DiscoverService extends BlockchainService {
 
     if (dappExists) {
       try {
-        const dappId = await DiscoverContract.id2index(id)
-
-        dapp = await DiscoverContract.dapps(dappId)
+        const dappId = await this.contractRaw.id2index(id)
+        dapp = await this.contractRaw.dapps(dappId)
       } catch (error) {
         throw new Error('Searching DApp does not exists')
       }
@@ -185,11 +184,11 @@ class DiscoverService extends BlockchainService {
   }
 
   async safeMax() {
-    return await DiscoverContract.safeMax()
+    return await this.contractRaw.safeMax()
   }
 
   async isDAppExists(id) {
-    return await DiscoverContract.existingIDs(id)
+    return await this.contractRaw.existingIDs(id)
   }
 
   async checkIfCreatorOfDApp(id) {
@@ -310,7 +309,10 @@ class DiscoverService extends BlockchainService {
     const uploadedMetadata = await MetadataClient.upload(dappMetadata, email)
 
     try {
-      const tx = await ConnectedDiscoverContract.setMetadata(id, uploadedMetadata)
+      const tx = await ConnectedDiscoverContract.setMetadata(
+        id,
+        uploadedMetadata,
+      )
       let receipt = await tx.wait()
       // TODO: This results in endless "Waiting for confirmation... errors, though the tx is successful"
       await MetadataClient.update(id, tx)
@@ -323,7 +325,7 @@ class DiscoverService extends BlockchainService {
 
   async withdrawMax(dappId) {
     const decimals = 1000000
-    const draw = await DiscoverContract.withdrawMax(dappId)
+    const draw = await this.contractRaw.withdrawMax(dappId)
     const withdraw = parseInt(draw, 10)
     return Math.floor(withdraw / decimals)
   }
