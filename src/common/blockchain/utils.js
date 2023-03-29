@@ -24,9 +24,9 @@ export default {
       return TRANSACTION_STATUSES.Successful
     }
 
-    const txReceipt = await window.ethereum.getTransactionReceipt(txHash)
+    const txReceipt = await window.ethereum.waitForTransaction(txHash, 1, 15)
     if (txReceipt) {
-      await waitOneMoreBlock(txReceipt.blockNumber)
+      //await waitOneMoreBlock(txReceipt.blockNumber)
 
       return txReceipt.status
         ? TRANSACTION_STATUSES.Successful
