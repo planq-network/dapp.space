@@ -9,12 +9,15 @@ const TRANSACTION_STATUSES = {
 const waitOneMoreBlock = async function(prevBlockNumber) {
   return new Promise(resolve => {
     setTimeout(async () => {
-      const blockNumber = await window.ethereum.getBlockNumber()
+      const blockNumber = await window.ethereum.request({
+        method: 'eth_getBlockByNumber',
+        params: ['latest', false],
+      })
       if (prevBlockNumber === blockNumber) {
         return waitOneMoreBlock(prevBlockNumber)
       }
       resolve()
-    }, 30000)
+    }, 6000)
   })
 }
 
@@ -24,9 +27,13 @@ export default {
       return TRANSACTION_STATUSES.Successful
     }
 
-    const txReceipt = await window.ethereum.waitForTransaction(txHash, 1, 15)
+    const txReceipt = await window.ethereum.request({
+      method: 'eth_getTransactionReceipt',
+      params: [txHash.hash],
+    })
+
     if (txReceipt) {
-      //await waitOneMoreBlock(txReceipt.blockNumber)
+      await waitOneMoreBlock(txReceipt.blockNumber)
 
       return txReceipt.status
         ? TRANSACTION_STATUSES.Successful
