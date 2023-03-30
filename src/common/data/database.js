@@ -1,7 +1,7 @@
 import { openDB } from 'idb'
 import DappModel from './dapp'
 
-const DB_NAME = 'status_discover'
+const DB_NAME = 'dapp_space'
 const DB_STORE_DAPPS = 'store_dapps'
 
 function open() {
@@ -28,6 +28,9 @@ export default class Database {
   }
 
   static async creditDapp(dapp) {
+    if (dapp.id === undefined) {
+      return
+    }
     const db = await open()
     await db.put(DB_STORE_DAPPS, dapp)
   }
