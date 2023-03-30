@@ -115,10 +115,12 @@ class DiscoverService extends BlockchainService {
         const dappMetadata = dappsCache[dapp.metadata]
         if (dappMetadata) {
           delete dappsCache[dapp.metadata]
-          dapp.metadata = dappMetadata.details
-          dapp.metadata.status = dappMetadata.status
+          let dappC = JSON.parse(JSON.stringify(dapp))
 
-          dapps.push(dapp)
+          dappC.metadata = dappMetadata.details
+          dappC.metadata.status = dappMetadata.status
+
+          dapps.push(dappC)
         }
       }
 
