@@ -141,9 +141,11 @@ class DiscoverService extends BlockchainService {
       )
 
       if (dappMetadata === null) return null
-      dapp.metadata = dappMetadata.details
-      dapp.metadata.status = dappMetadata.status
-      return dapp
+      let dappC = { ...dapp }
+      dappC.metadata = dappMetadata.details
+      dappC.metadata.status = dappMetadata.status
+
+      return dappC
     } catch (error) {
       throw new Error(`Error fetching dapps. Details: ${error.message}`)
     }
@@ -175,11 +177,12 @@ class DiscoverService extends BlockchainService {
 
     try {
       const dappMetadata = await MetadataClient.retrieveMetadata(dapp.metadata)
-      if (dappMetadata === null) return EMPTY_METADATA
-      dapp.metadata = dappMetadata.details
-      dapp.metadata.status = dappMetadata.status
 
-      return dapp
+      if (dappMetadata === null) return EMPTY_METADATA
+      let dappC = { ...dapp }
+      dappC.metadata = dappMetadata.details
+      dappC.metadata.status = dappMetadata.status
+      return dappC
     } catch (error) {
       throw new Error('Error fetching correct data')
     }
@@ -208,7 +211,7 @@ class DiscoverService extends BlockchainService {
     )
 
     const dappMetadata = JSON.parse(JSON.stringify(metadata))
-    dappMetadata.uploader = this.sharedContext.account
+    dappMetadata.uploader = await this.getAccount()
 
     const dappId = ethers.utils.keccak256(
       ethers.utils.toUtf8Bytes(JSON.stringify(dappMetadata)),
@@ -235,6 +238,8 @@ class DiscoverService extends BlockchainService {
         tokenAmount,
         callData,
       )
+    } else {
+      throw new Error('PLQ amount needs to be bigger than 0!')
     }
 
     await MetadataClient.requestApproval(uploadedMetadata)
@@ -263,7 +268,6 @@ class DiscoverService extends BlockchainService {
   async downVote(id) {
     const dapp = await this.getDAppById(id)
     const amount = (await this.downVoteCost(dapp.id)).c
-
     const amountBN = ethers.BigNumber.from(amount)
 
     const tokenAmount = this.decimalMultiplier.mul(amountBN)
@@ -306,7 +310,7 @@ class DiscoverService extends BlockchainService {
     await this.validator.validateMetadataSet(id)
 
     const dappMetadata = JSON.parse(JSON.stringify(metadata))
-    dappMetadata.uploader = this.sharedContext.account
+    dappMetadata.uploader = await this.getAccount()
 
     const uploadedMetadata = await MetadataClient.upload(dappMetadata, email)
 

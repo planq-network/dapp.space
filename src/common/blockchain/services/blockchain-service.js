@@ -4,7 +4,6 @@ const ethers = require('ethers')
 
 class BlockchainService {
   constructor(sharedContext, address = '', abi = '', Validator) {
-    //this.contract = address.address
     // eslint-disable-next-line no-underscore-dangle
     this._provider = new ethers.providers.Web3Provider(window.ethereum)
     this.checkNetwork()

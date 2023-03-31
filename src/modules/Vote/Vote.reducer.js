@@ -144,6 +144,8 @@ export const fetchVoteRatingAction = (dapp, isUpvote, sntValue) => {
       if (sntValue === 0) return
       dispatch(updateAfterUpVotingValuesAction(rating))
     } else {
+      console.log(rating)
+      console.log(downVoteSntValue)
       dispatch(updateAfterDownVotingValuesAction(rating, downVoteSntValue))
     }
   }
