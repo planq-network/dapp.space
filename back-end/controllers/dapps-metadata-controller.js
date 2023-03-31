@@ -166,7 +166,7 @@ class DAppsMetadataController {
 }
 
 const waitToBeMined = async function (txHash, callback) {
-  const updateMetadataTx = await web3.eth.getTransaction(txHash)
+  const updateMetadataTx = await web3.getTransaction(txHash)
 
   if (!updateMetadataTx.blockNumber) {
     setTimeout(() => {
