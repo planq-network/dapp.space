@@ -1,6 +1,7 @@
 /* global web3 */
 import { ethers } from 'ethers'
 import { broadcastContractFn } from '../helpers'
+
 import MetadataClient from '../../../clients/metadata-client'
 
 import BlockchainService from '../blockchain-service'
@@ -115,8 +116,7 @@ class DiscoverService extends BlockchainService {
         const dappMetadata = dappsCache[dapp.metadata]
         if (dappMetadata) {
           delete dappsCache[dapp.metadata]
-          let dappC = JSON.parse(JSON.stringify(dapp))
-
+          let dappC = { ...dapp }
           dappC.metadata = dappMetadata.details
           dappC.metadata.status = dappMetadata.status
 
