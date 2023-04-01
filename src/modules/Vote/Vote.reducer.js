@@ -129,7 +129,7 @@ export const fetchVoteRatingAction = (dapp, isUpvote, sntValue) => {
         )
         // balanceDownBy, votesRequired, cost
         rating = parseInt(downVoteEffect.b, 10)
-        downVoteSntValue = downVoteEffect.c
+        downVoteSntValue = downVoteEffect.c.toString()
       } catch (e) {
         return
       }
@@ -144,8 +144,6 @@ export const fetchVoteRatingAction = (dapp, isUpvote, sntValue) => {
       if (sntValue === 0) return
       dispatch(updateAfterUpVotingValuesAction(rating))
     } else {
-      console.log(rating)
-      console.log(downVoteSntValue)
       dispatch(updateAfterDownVotingValuesAction(rating, downVoteSntValue))
     }
   }

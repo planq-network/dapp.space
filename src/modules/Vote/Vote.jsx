@@ -200,7 +200,8 @@ class Vote extends Component {
                       value={sntValue}
                       onChange={this.handleChange}
                       onKeyDown={this.handleDown}
-                      placeholder="0"
+                      autoFocus="true"
+                      placeholder="1"
                       style={{
                         width: `${21 * Math.max(1, sntValue.length)}px`,
                       }}
@@ -231,7 +232,7 @@ class Vote extends Component {
               <div className={styles.footer}>
                 <button
                   type="submit"
-                  disabled={(!sntValue || sntValue === '0') && isUpvote}
+                  disabled={!sntValue || sntValue === '0'}
                   onClick={this.onClickVote}
                 >
                   {isUpvote ? 'Upvote' : 'Downvote'}
