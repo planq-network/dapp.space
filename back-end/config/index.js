@@ -23,7 +23,7 @@ const config = {
   IPFS_PROTOCOL                : env.IPFS_PROTOCOL                || "https",
   /* Blockchain */
   DISCOVER_CONTRACT            : env.DISCOVER_CONTRACT            || "0x043fF89DDE335D69259FdbBDFE4b17D9CD788811",
-  BLOCKCHAIN_CONNECTION_POINT  : env.BLOCKCHAIN_CONNECTION_POINT  || "https://evm-rpc.planq.network",
+  BLOCKCHAIN_CONNECTION_POINT  : env.BLOCKCHAIN_CONNECTION_POINT  || "https://evm-rpc.planq.network:443",
   /* EMail */
   EMAIL_USER                   : env.EMAIL_USER                   || null,
   EMAIL_PASSWORD               : env.EMAIL_PASSWORD               || null,

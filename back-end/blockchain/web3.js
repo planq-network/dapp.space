@@ -1,7 +1,7 @@
-const Web3 = require('ethers')
+const { ethers } = require('ethers')
 const config = require('../config')
 
-module.exports = new Web3.providers.JsonRpcProvider(
+module.exports = new ethers.providers.JsonRpcProvider(
   config.BLOCKCHAIN_CONNECTION_POINT,
-  7070,
+  {chainId: 7070, name:"Planq"},
 )

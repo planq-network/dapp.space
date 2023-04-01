@@ -58,7 +58,7 @@ class DAppsMetadataController {
   }
 
   static async setMetadataStatus(req, res) {
-    waitToBeMined(req.body.txHash, async () => {
+    waitToBeMined(req.body.txHash.hash, async () => {
       const dapp = await DiscoverService.retrieveDApp(req.params.dappId)
       const dappMetadata = await DAppMetadata.findByBytes32Hash(dapp.metadata)
       const initialDAppMetadata = await DAppMetadata.findOne({
@@ -166,7 +166,7 @@ class DAppsMetadataController {
 }
 
 const waitToBeMined = async function (txHash, callback) {
-  const updateMetadataTx = await web3.getTransaction(txHash)
+  const updateMetadataTx = await web3.waitForTransaction(txHash)
 
   if (!updateMetadataTx.blockNumber) {
     setTimeout(() => {
