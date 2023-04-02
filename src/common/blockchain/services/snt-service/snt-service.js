@@ -35,6 +35,15 @@ class SNTService extends BlockchainService {
     return this.contractRaw.transfersEnabled()
   }
 
+  async withdraw(amount) {
+    const ConnectedSNTToken = await super.__unlockServiceAccount(SNTToken)
+
+    let tx = await ConnectedSNTToken.withdraw(amount.toString())
+    let receipt = await tx.wait()
+
+    return tx
+  }
+
   async approveAndCall(spender, amount, callData) {
     const ConnectedSNTToken = await super.__unlockServiceAccount(SNTToken)
 
