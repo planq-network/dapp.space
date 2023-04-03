@@ -68,7 +68,7 @@ class HowToSubmit extends React.Component {
                     ranks highest.
                   </p>
                   <p>
-                    PLQ you stake is locked in the Discover contract. You can,
+                    PLQ you stake is locked in the Dapp.Space contract. You can,
                     at any time, withdraw a percentage of what you have staked.
                     The more you stake, the lower the percentage you can
                     withdraw. Withdrawals must be made from the same wallet as
@@ -92,7 +92,7 @@ class HowToSubmit extends React.Component {
                 <div className={styles.frame}>
                   <p>
                     Furthermore, the operators of{' '}
-                    <a href="https://dap.ps">https://dap.ps</a> reserve the
+                    <a href="https://dapp.space">https://dapp.space</a> reserve the
                     right to remove any DApp from the UI for reasons including,
                     but not limited to:
                   </p>
@@ -112,7 +112,7 @@ class HowToSubmit extends React.Component {
                   <p>
                     Anyone is welcome to fork the software and implement
                     different UI choices for the same underlying contract. Note
-                    that Discover is not affiliated with Status directly, we
+                    that Dapp.Space is not affiliated with Status directly, we
                     have simply chosen to use PLQ as a token of value, to abide
                     by <a href="https://status.im/about/">Status’ principles</a>
                     , and to take a mobile-first approach to development.

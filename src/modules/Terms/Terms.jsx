@@ -77,32 +77,32 @@ class Terms extends React.Component {
               <p>
                 You accept the Terms by either (1) clicking to agree or accept
                 where these options are presented to you, or (2) actually using
-                Discover (“Discover”) at https://dap.ps
+                Dapp.Space (“Dapp.Space”) at https://dapp.space
               </p>
               <p>
-                In order to use Discover you must be 13 years of age or older.
+                In order to use Dapp.Space you must be 13 years of age or older.
                 If you are between 13 and 18 years of age, you must have your
-                parent or legal guardian’s permission to use Discover.
+                parent or legal guardian’s permission to use Dapp.Space.
               </p>
               <p>
-                By accessing Discover you accept the terms of use as set out
+                By accessing Dapp.Space you accept the terms of use as set out
                 herein. All information is provided of a mere general nature for
-                informational purposes only. By accessing Discover you warrant
+                informational purposes only. By accessing Dapp.Space you warrant
                 to the operators, contributors and the host thereof that you may
                 freely, without limitation, access the DApp store and all of its
-                contents in your jurisdiction and shall not use Discover and its
+                contents in your jurisdiction and shall not use Dapp.Space and its
                 contents in any way that infringes on laws or the rights of
                 others including those of the aforementioned persons (including
                 the entities they may represent).
               </p>
               <p>
-                Neither Discover nor any of the persons or entities involved in
-                any way in respect of Discover, including its host and its
+                Neither Dapp.Space nor any of the persons or entities involved in
+                any way in respect of Dapp.Space, including its host and its
                 contributors, provide for specific legal, fiscal, economical
                 and/or any other kind of advice or recommendation that may be
-                relied upon. A visitor to Discover will therefore act at their
+                relied upon. A visitor to Dapp.Space will therefore act at their
                 own risk in accessing or in any way relying on the content of
-                the Discover and the visitor is therefore solely responsible for
+                the Dapp.Space and the visitor is therefore solely responsible for
                 any consequences thereof.
               </p>
             </div>
@@ -135,7 +135,7 @@ class Terms extends React.Component {
           >
             <div ref={this.nodes.responsibilities}>
               <p>
-                You agree that if You make Your DApp available through Discover,
+                You agree that if You make Your DApp available through Dapp.Space,
                 You will protect the privacy and legal rights of users. If the
                 users provide You with, or Your DApp accesses or uses,
                 usernames, passwords, or other login information or personal
@@ -157,13 +157,13 @@ class Terms extends React.Component {
                 information.
               </p>
               <p>
-                You will not engage in any activity with Discover, including
-                making Your Dapp available via Discover, that interferes with,
+                You will not engage in any activity with Dapp.Space, including
+                making Your Dapp available via Dapp.Space, that interferes with,
                 disrupts, damages, or accesses in an unauthorized manner the
                 devices, servers, networks, or other properties or services of
-                any third party including, but not limited to, Status or any
+                any third party including, but not limited to, Planq or any
                 Authorized Provider. You may not use user information obtained
-                via Discover to sell or distribute DApp outside of Discover.
+                via Dapp.Space to sell or distribute DApp outside of Dapp.Space.
               </p>
             </div>
             {responsibilitiesHeight === DEFAULT_HEIGHT && (
@@ -182,7 +182,7 @@ class Terms extends React.Component {
           <div className={styles.frameTitle}>Limitation of liability</div>
           <div className={styles.frameImportant}>
             <p>
-              The people responsible for Discover are not liable for your
+              The people responsible for Dapp.Space are not liable for your
               mistakes.
             </p>
           </div>
@@ -193,13 +193,13 @@ class Terms extends React.Component {
           >
             <div ref={this.nodes.limitations}>
               <p>
-                The content, data, materials and/or other services on Discover
+                The content, data, materials and/or other services on Dapp.Space
                 are provided without any warranties of any kind regarding its
                 title, ownership, accuracy, completeness and correctness.
               </p>
               <p>
                 Specifically, unless otherwise required by law, in no event
-                shall the operators, contributors to or hosts of Discover be
+                shall the operators, contributors to or hosts of Dapp.Space be
                 liable for any damages of any kind, including, but not limited
                 to, loss of use, loss of assets or rights or privileges, loss of
                 profits, or loss of data arising out of or in any way connected
@@ -207,10 +207,10 @@ class Terms extends React.Component {
                 to time.
               </p>
               <p>
-                In no way are the operators, contributors to or host of Discover
+                In no way are the operators, contributors to or host of Dapp.Space
                 responsible for the actions, decisions, transactions, or other
                 behavior taken or not taken by You or person relying on You in
-                reliance upon Discover and its contents from time to time.
+                reliance upon Dapp.Space and its contents from time to time.
               </p>
             </div>
             {limitationsHeight === DEFAULT_HEIGHT && (
@@ -230,11 +230,12 @@ class Terms extends React.Component {
           <div className={styles.frameContent}>
             <div ref={this.nodes.responsibilities}>
               <p>
-                Swiss law exclusively applies to the use of content, data,
-                materials and/or other services provided for/on Discover. The
-                court of the Canton of Zug, Switzerland, will be the sole and
+                The law of the Netherlands exclusively applies to the use of
+                content, data, materials and/or other services provided
+                for/on Dapp.Space. The court of the District of Limburg,
+                location Maastricht, the Netherlands, will be the sole and
                 exclusive competent court regarding any dispute relating to or
-                stemming from the use of Discover including, without limitation,
+                stemming from the use of Dapp.Space including, without limitation,
                 in respect of any breach of or dispute in respect as referred
                 above, irrespective of the jurisdiction applicable thereto.
               </p>
@@ -247,8 +248,8 @@ class Terms extends React.Component {
           <div className={styles.frameContent}>
             <div ref={this.nodes.responsibilities}>
               <p>
-                These terms of use were amended for the last time on 15th April
-                2019 and may be altered at any time without prior notice.
+                These terms of use were amended for the last time on 3rd April
+                2023 and may be altered at any time without prior notice.
               </p>
               <p>
                 <strong>Good luck reaching the top of the rankings!</strong>
