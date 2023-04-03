@@ -92,9 +92,9 @@ class HowToSubmit extends React.Component {
                 <div className={styles.frame}>
                   <p>
                     Furthermore, the operators of{' '}
-                    <a href="https://dapp.space">https://dapp.space</a> reserve the
-                    right to remove any DApp from the UI for reasons including,
-                    but not limited to:
+                    <a href="https://dapp.space">https://dapp.space</a> reserve
+                    the right to remove any DApp from the UI for reasons
+                    including, but not limited to:
                   </p>
                 </div>
                 <div className={`${styles.frame} ${styles.withBorder}`}>
