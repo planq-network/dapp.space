@@ -297,11 +297,15 @@ class DiscoverService extends BlockchainService {
     await this.validator.validateWithdrawing(id, tokenAmount)
 
     try {
-      const tx = await ConnectedDiscoverContract.withdraw(id, tokenAmount.toString())
+      const tx = await ConnectedDiscoverContract.withdraw(
+        id,
+        tokenAmount.toString(),
+      )
       let receipt = await tx.wait()
 
-      const withdrawTx = await this.sharedContext.SNTService.withdraw(tokenAmount)
-
+      const withdrawTx = await this.sharedContext.SNTService.withdraw(
+        tokenAmount,
+      )
     } catch (error) {
       throw new Error(`Transfer on withdraw failed. Details: ${error.message}`)
     }
