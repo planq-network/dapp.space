@@ -497,7 +497,8 @@ contract MiniMeToken is MiniMeTokenInterface, Controlled {
       require(previousBalanceFrom >= _amount);
       updateValueAtNow(totalSupplyHistory, curTotalSupply - _amount);
       updateValueAtNow(balances[_owner], previousBalanceFrom - _amount);
-      msg.sender.call.value(_amount);
+      (bool success,) = _owner.call.value(_amount)("");
+      require(success, "Transfer failed.");
       emit Transfer(_owner, address(0), _amount);
       return true;
     }
