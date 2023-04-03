@@ -90,20 +90,20 @@ class Terms extends React.Component {
                 informational purposes only. By accessing Dapp.Space you warrant
                 to the operators, contributors and the host thereof that you may
                 freely, without limitation, access the DApp store and all of its
-                contents in your jurisdiction and shall not use Dapp.Space and its
-                contents in any way that infringes on laws or the rights of
+                contents in your jurisdiction and shall not use Dapp.Space and
+                its contents in any way that infringes on laws or the rights of
                 others including those of the aforementioned persons (including
                 the entities they may represent).
               </p>
               <p>
-                Neither Dapp.Space nor any of the persons or entities involved in
-                any way in respect of Dapp.Space, including its host and its
+                Neither Dapp.Space nor any of the persons or entities involved
+                in any way in respect of Dapp.Space, including its host and its
                 contributors, provide for specific legal, fiscal, economical
                 and/or any other kind of advice or recommendation that may be
                 relied upon. A visitor to Dapp.Space will therefore act at their
                 own risk in accessing or in any way relying on the content of
-                the Dapp.Space and the visitor is therefore solely responsible for
-                any consequences thereof.
+                the Dapp.Space and the visitor is therefore solely responsible
+                for any consequences thereof.
               </p>
             </div>
             {termsAndConditionsHeight === DEFAULT_HEIGHT && (
@@ -135,11 +135,11 @@ class Terms extends React.Component {
           >
             <div ref={this.nodes.responsibilities}>
               <p>
-                You agree that if You make Your DApp available through Dapp.Space,
-                You will protect the privacy and legal rights of users. If the
-                users provide You with, or Your DApp accesses or uses,
-                usernames, passwords, or other login information or personal
-                information, You agree to make the users aware that the
+                You agree that if You make Your DApp available through
+                Dapp.Space, You will protect the privacy and legal rights of
+                users. If the users provide You with, or Your DApp accesses or
+                uses, usernames, passwords, or other login information or
+                personal information, You agree to make the users aware that the
                 information will be available to Your DApp, and You agree to
                 provide legally adequate privacy notice and protection for those
                 users. Further, Your Dapp may only use that information for the
@@ -207,10 +207,11 @@ class Terms extends React.Component {
                 to time.
               </p>
               <p>
-                In no way are the operators, contributors to or host of Dapp.Space
-                responsible for the actions, decisions, transactions, or other
-                behavior taken or not taken by You or person relying on You in
-                reliance upon Dapp.Space and its contents from time to time.
+                In no way are the operators, contributors to or host of
+                Dapp.Space responsible for the actions, decisions, transactions,
+                or other behavior taken or not taken by You or person relying on
+                You in reliance upon Dapp.Space and its contents from time to
+                time.
               </p>
             </div>
             {limitationsHeight === DEFAULT_HEIGHT && (
@@ -231,12 +232,12 @@ class Terms extends React.Component {
             <div ref={this.nodes.responsibilities}>
               <p>
                 The law of the Netherlands exclusively applies to the use of
-                content, data, materials and/or other services provided
-                for/on Dapp.Space. The court of the District of Limburg,
-                location Maastricht, the Netherlands, will be the sole and
-                exclusive competent court regarding any dispute relating to or
-                stemming from the use of Dapp.Space including, without limitation,
-                in respect of any breach of or dispute in respect as referred
+                content, data, materials and/or other services provided for/on
+                Dapp.Space. The court of the District of Limburg, location
+                Maastricht, the Netherlands, will be the sole and exclusive
+                competent court regarding any dispute relating to or stemming
+                from the use of Dapp.Space including, without limitation, in
+                respect of any breach of or dispute in respect as referred
                 above, irrespective of the jurisdiction applicable thereto.
               </p>
             </div>
