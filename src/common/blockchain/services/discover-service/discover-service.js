@@ -30,7 +30,7 @@ class DiscoverService extends BlockchainService {
   constructor(sharedContext) {
     super(
       sharedContext,
-      '0x043fF89DDE335D69259FdbBDFE4b17D9CD788811',
+      '0x3912E90831cB1cB7aDdb62ea259fa964950F6EA0',
       DiscoverArtifact.abi,
       DiscoverValidator,
     )

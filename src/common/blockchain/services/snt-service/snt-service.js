@@ -12,7 +12,7 @@ class SNTService extends BlockchainService {
   constructor(sharedContext) {
     super(
       sharedContext,
-      '0xa2dd72048C2bDc826c827a72c5C94c9a2ff8f7eB',
+      '0xDe5CD57E48296ed5b8534b2415a3790562afc054',
       MiniMeTokenArtifact.abi,
       SNTValidator,
     )
