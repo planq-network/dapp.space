@@ -1,12 +1,25 @@
-# Discover
+# Dapp.Space
 
-Discover new and useful DApps that are mobile-friendly and easy to use. Viewing curated information does not require any special tools, though effecting the way information is ranked will require a web3 wallet, whether that is Status, MetaMask, Trust, Brave or whichever one you prefer.
+Dapp.Space new and useful DApps that are mobile-friendly and easy to use. Viewing curated information does not require any special tools, though effecting the way information is ranked will require a web3 wallet, whether that is Castrum, Status, MetaMask, Trust, Brave or whichever one you prefer.
 
-You can learn more about bonded curves and how Discover works [here](https://our.status.im/discover-a-brave-new-curve/).
+You can learn more about bonded curves and how Dapp.Space works [here](https://our.status.im/discover-a-brave-new-curve/).
+
+## Changelog
+
+### 3rd April 2023
+- [4f390e25] Removed embark and replaced it with hardhat
+- [daaa92e4] Upgraded all packages but the router one
+- [f56395af] Replace BN.js with ethers.BigNumber for compatibility
+- [9a26dcd3] Updated web3 syntax's with etherjs ones
+- [3d3926b3] Changed the Solidity MiniMeToken contract to support native withdraw/deposit
+- [44e6557b] Fixed the popup issue on Firefox
+- [4db920a2] Loading fixed in case Metamask is not installed
+- [507e6539] Add autofocus for upvoting
+- [8f32c714] remove Kyber
 
 ## Available Scripts
 
-This project is based on Embark v4.0.1, with a few things customised for React.
+This project is based on Hardhat v2.12.5, with a few things customised for React.
 ```
 yarn run build:dev
 ```
@@ -65,10 +78,9 @@ On Linux, setting up `mongodb` is as easy as `sudo apt install -y mongodb`, whic
 
 #### Work to be done
 
-1. Integrate Kyber functionality so that people can use (at least) SNT, ETH and DAI to participate in the store (it just gets exchanged in the background into SNT before being submitted to the contract).
-2. Create a `downvote pool` for each DApp so that anyone can downvote by any amount, not just 1%. When the pool hits 1%, the downvote is sent to the contract. This will be important if people ever stake large amounts, 1% of which may be too expensive for individual users. It will potentially amplify "the community's" ability to respond to bad actors.
-3. Integrate [embeddable whisper chats](https://github.com/status-im/status-chat-widget) into the site, so that it is easy to plug into the community chat directly "behind" each DApp (it's just the name of the DApp as a whisper topic, i.e. #cryptokitties).
-4. Research a way to fetch information about popular DApps on Ethereum through non-economic metrics. Perhaps this means just plugging into an API from OpenSea/StateOfTheDApps for now and leveraging their work. Perhaps it means figuring out how to [gossip information about use of DApps via whisper](https://discuss.status.im/t/friend-to-friend-content-discovery-community-feeds/1212)?
+1. Create a `downvote pool` for each DApp so that anyone can downvote by any amount, not just 1%. When the pool hits 1%, the downvote is sent to the contract. This will be important if people ever stake large amounts, 1% of which may be too expensive for individual users. It will potentially amplify "the community's" ability to respond to bad actors.
+2Integrate [embeddable whisper chats](https://github.com/status-im/status-chat-widget) into the site, so that it is easy to plug into the community chat directly "behind" each DApp (it's just the name of the DApp as a whisper topic, i.e. #cryptokitties).
+3Research a way to fetch information about popular DApps on Ethereum through non-economic metrics. Perhaps this means just plugging into an API from OpenSea/StateOfTheDApps for now and leveraging their work. Perhaps it means figuring out how to [gossip information about use of DApps via whisper](https://discuss.status.im/t/friend-to-friend-content-discovery-community-feeds/1212)?
 
 
 #### Running unit tests
