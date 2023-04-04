@@ -41,6 +41,8 @@
   overflow: hidden;
   flex-direction: column;
   justify-content: flex-start;
+  display: inline-grid;
+  justify-items: center;
 
   p {
     margin-bottom: 0;
