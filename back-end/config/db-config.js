@@ -9,6 +9,7 @@ class DBConfig {
         }
         mongoose.Promise = global.Promise;
         mongoose.connect(config.DB_CONNECTION, { useNewUrlParser: true });
+        mongoose.connection.useDb(config.DB_NAME)
     }
 }
 
