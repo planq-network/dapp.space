@@ -13,7 +13,7 @@ const config = {
   ENVIRONMENT                  : env.ENVIRONMENT                  || "DEV",
   /* Database */
   DB_CONNECTION                : env.DB_CONNECTION                || null,
-  DB_NAME                      : env.DB_NAME                      || null,
+
   /* Access */
   ADMIN_USER                   : env.ADMIN_USER                   || "admin",
   ADMIN_PASSWORD               : env.ADMIN_PASSWORD               || "discoverbancor",
