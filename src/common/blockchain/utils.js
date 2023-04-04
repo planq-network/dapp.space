@@ -45,8 +45,12 @@ export default {
 }
 
 const checkNetwork = async () => {
-  const networkId = await window.ethereum.networkVersion
-  return networkId !== 7070
+  const networkId = await window.ethereum.request({
+    method: 'net_version',
+  })
+  console.log(networkId)
+
+  return networkId != 7070
 }
 
 export { checkNetwork }
