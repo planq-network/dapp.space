@@ -32,7 +32,7 @@ const config = {
   EMAIL_PORT                   : env.EMAIL_PORT                   || null,
   EMAIL_TLS                    : env.EMAIL_TLS                    || null,
   APPROVER_MAIL                : env.APPROVER_MAIL                || "dapp.space@planq.network",
-  APPROVE_NOTIFIER_MAIL        : env.APPROVE_NOTIFIER_MAIL        || "dapp.space@planq.network",
+  APPROVE_NOTIFIER_MAIL        : env.APPROVE_NOTIFIER_MAIL        || "info@dapp.space",
   /* Logging */
   CLOUDWATCH_ACCESS_KEY_ID     : env.CLOUDWATCH_ACCESS_KEY_ID     || null,
   CLOUDWATCH_SECRET_ACCESS_KEY : env.CLOUDWATCH_SECRET_ACCESS_KEY || null,
