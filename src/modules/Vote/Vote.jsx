@@ -203,7 +203,8 @@ class Vote extends Component {
                       autoFocus="true"
                       placeholder="1"
                       style={{
-                        width: `${64 * Math.max(1, sntValue.length)}px`,
+                        textAlign: `right`,
+                        width: `${32 * Math.max(1, sntValue.length)}px`,
                       }}
                     />
                   </div>
