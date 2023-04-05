@@ -6,6 +6,7 @@ import categories from '../../common/utils/categories'
 import humanise from '../../common/utils/humanise'
 import dropdownArrows from '../../common/assets/images/dropdown-arrows.svg'
 import styles from './CategorySelector.module.scss'
+import Index from '../../common/components/Index'
 
 class CategorySelector extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class CategorySelector extends React.Component {
           className={styles.open}
         >
           <div className={styles.openHeader}>
-            <h2>Categories</h2>
+            <Index size="small" />
             <ViewAll size="small" />
           </div>
           <div className={styles.categories}>
