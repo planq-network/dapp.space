@@ -11,7 +11,7 @@ const featuredDapps = [
   {
     name: 'Osmosis',
     description: 'Osmosis is the premier cross-chain DeFi hub.',
-    url: 'https://frontier.osmosis.zone/',
+    url: 'https://app.osmosis.zone/',
     banner: OsmosisBanner,
     icon: OsmosisLogo,
   },
