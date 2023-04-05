@@ -100,9 +100,6 @@ const ProfileContent = ({
             <div className={styles.button} onClick={onClickUpdateMetadata}>
               Edit
             </div>
-            <div className={styles.button} onClick={onClickWithdraw}>
-              Withdraw
-            </div>
           </div>
         )}
       </div>
