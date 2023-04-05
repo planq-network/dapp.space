@@ -10,7 +10,7 @@ const Footer = props => {
 
   return (
     <div className={styles.footer}>
-      <a href="https://discord.gg/planq-network" className={styles.footerItem}>
+      <a href="https://discord.gg/planq-network" target="_blank" className={styles.footerItem}>
         <div className={styles.iconWrap}>
           <img src={communityIcon} alt="Join the Planq community chat" />
         </div>
