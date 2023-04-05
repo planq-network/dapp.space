@@ -203,7 +203,7 @@ class Vote extends Component {
                       autoFocus="true"
                       placeholder="1"
                       style={{
-                        width: `${21 * Math.max(1, sntValue.length)}px`,
+                        width: `${64 * Math.max(1, sntValue.length)}px`,
                       }}
                     />
                   </div>
