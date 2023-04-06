@@ -1,11 +1,24 @@
 /* global web3 */
 
+import { KeplrProvider } from '../keplr-provider'
+
 const ethers = require('ethers')
 
 class BlockchainService {
   constructor(sharedContext, address = '', abi = '', Validator) {
     // eslint-disable-next-line no-underscore-dangle
-    this._provider = new ethers.providers.Web3Provider(window.ethereum)
+    this._provider = new KeplrProvider(
+      'https://evm-rpc.planq.network:443',
+      {
+        chainId: 7070,
+        name: 'Planq',
+      },
+      'planq_7070-2',
+    )
+
+    this._provider.checkNetwork()
+    this._provider.getAccounts()
+    //this._provider = new ethers.providers.Web3Provider(window.ethereum)
     this.checkNetwork()
     this.abi = abi
     this.contractRaw = new ethers.Contract(
@@ -21,7 +34,7 @@ class BlockchainService {
 
   async getAccount() {
     try {
-      if (web3 && this._provider) {
+      if (this._provider) {
         const account = (
           await window.ethereum.request({ method: 'eth_requestAccounts' })
         )[0]
@@ -64,18 +77,19 @@ class BlockchainService {
 
   async __unlockServiceAccount(Contract) {
     this.sharedContext.account = await this.getAccount()
+    const signer = await this._provider.getSigner(0)
 
     const clonedContract = new ethers.Contract(
-      this.contract,
+      this.contractRaw.address,
       this.abi,
-      this._provider.getSigner(0),
+      signer,
     )
 
     if (!this.sharedContext.account) {
       throw new Error('web3 is missing')
     }
 
-    clonedContract.currentProvider = this._provider.getSigner(0)
+    clonedContract.currentProvider = signer
 
     return clonedContract
   }
