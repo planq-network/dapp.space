@@ -1,11 +1,14 @@
 import { JsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers'
 import { ethToPlanq, planqToEth } from './keplr-utils'
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { VoidSigner, Wallet } from 'ethers'
 
 const _constructorGuard = {}
 
 export class KeplrProvider extends JsonRpcProvider {
   keplrAvailable = false
   chainId = 'planq_7070-2'
+  keplrSigner = null
   constructor(url, network, chainId) {
     super(url, network)
 
@@ -32,6 +35,12 @@ export class KeplrProvider extends JsonRpcProvider {
     }
   }
 
+  async getAccountsBech32() {
+    const offlineSigner = window.keplr.getOfflineSigner(this.chainId)
+    const accounts = await offlineSigner.getAccounts()
+    return accounts[0].address
+  }
+
   async getAccounts() {
     const offlineSigner = window.keplr.getOfflineSigner(this.chainId)
     const accounts = await offlineSigner.getAccounts()
@@ -50,8 +59,11 @@ export class KeplrProvider extends JsonRpcProvider {
   }
 
   async getSigner(index) {
-    let account = await this.getAccounts(index)
-    return super.getSigner(account)
+    let account = await this.getAccountsBech32()
+    if (!this.keplrSigner) {
+      this.keplrSigner = new KeplrSigner(account, this)
+    }
+    return this.keplrSigner
   }
 
   async addPlanqChain() {
@@ -100,5 +112,30 @@ export class KeplrProvider extends JsonRpcProvider {
       },
       features: ['ibc-transfer', 'ibc-go', 'eth-address-gen', 'eth-key-sign'],
     })
+  }
+}
+
+export class KeplrSigner extends VoidSigner {
+  keplrInstance = null
+  constructor(address, provider) {
+    super(address, provider)
+    this.keplrInstance = provider
+  }
+  async signTransaction(transaction) {
+    return this.keplrInstance.signEthereum(
+      this.keplrInstance.chainId,
+      this.keplrInstance.getAccountsBech32(),
+      transaction,
+      'transaction',
+    )
+  }
+
+  async signMessage(message) {
+    return this.keplrInstance.signEthereum(
+      this.keplrInstance.chainId,
+      this.keplrInstance.getAccountsBech32(),
+      message,
+      'message',
+    )
   }
 }
