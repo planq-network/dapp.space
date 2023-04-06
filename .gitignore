@@ -5,6 +5,7 @@ config/livenet/
 coverage
 node_modules
 package-lock.json
+logs.log
 dist
 full-build
 flattenedContracts
