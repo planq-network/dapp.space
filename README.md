@@ -8,6 +8,11 @@ Dapp.Space is a fork of [Discover](https://github.com/dap-ps/discover/).
 
 ## Changelog
 
+### 7th April 2023
+- [1a021658] Add Keplr signing support
+- [29d2ec03] Change category display on desktop resolution
+- [59d0782d] Fix profile modal whitespace issue
+
 ### 3rd April 2023
 - [4f390e25] Removed embark and replaced it with hardhat
 - [daaa92e4] Upgraded all packages but the router one
