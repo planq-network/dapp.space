@@ -145,7 +145,7 @@ class Profile extends Component {
 
     for (let i = 0; i < dapps.length; i += 1) {
       const item = dapps[i]
-      if (item.name.toLowerCase() === dapp_name.toLowerCase()) {
+      if (item.name.toLowerCase().trim() === dapp_name.toLowerCase().trim()) {
         highestRankedPosition = i + 1
         dapp = item
         break
