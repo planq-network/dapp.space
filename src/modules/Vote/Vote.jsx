@@ -102,7 +102,7 @@ class Vote extends Component {
         windowClassName={styles.modalWindow}
         contentClassName={styles.modalContent}
       >
-        {!learnMoreUpVote && !learnMoreDownVote && (
+        {currentPLQamount > 0 && !learnMoreUpVote && !learnMoreDownVote && (
           <>
             <form onSubmit={this.onClickVote}>
               <div className={styles.tabs}>
@@ -220,7 +220,7 @@ class Vote extends Component {
                 )}
                 {!isUpvote && (
                   <p className={styles.disclaimer}>
-                    PLQ you spend to downvote goes directly back to {dapp.name}.
+                    PLQ you spend to downvote is locked in the contract.
                     Downvoting moves their DApp down by 1% of the current
                     ranking. The cost is fixed by our unique bonded curve.{' '}
                     <span className="link" onClick={onClickLearnMoreDownVote}>
