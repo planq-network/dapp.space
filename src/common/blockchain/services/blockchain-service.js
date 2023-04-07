@@ -17,7 +17,6 @@ class BlockchainService {
       true,
     )
 
-    this._provider.checkNetwork()
     this._provider.getAccounts()
     //this._provider = new ethers.providers.Web3Provider(window.ethereum)
     this.checkNetwork()
@@ -54,31 +53,34 @@ class BlockchainService {
   }
 
   async checkNetwork() {
-    const currentNetworkId = await this._provider.getNetwork()
+    if (!this._provider.keplrAvailable) {
+      const currentNetworkId = await this._provider.getNetwork()
 
-    if (currentNetworkId.chainId != '7070') {
-      await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: '0x1B9E',
-            rpcUrls: ['https://evm-rpc.planq.network/'],
-            chainName: 'Planq Network',
-            nativeCurrency: {
-              name: 'Planq',
-              symbol: 'PLQ',
-              decimals: 18,
+      if (currentNetworkId.chainId != '7070') {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: '0x1B9E',
+              rpcUrls: ['https://evm-rpc.planq.network/'],
+              chainName: 'Planq Network',
+              nativeCurrency: {
+                name: 'Planq',
+                symbol: 'PLQ',
+                decimals: 18,
+              },
+              blockExplorerUrls: ['https://evm.planq.network/'],
             },
-            blockExplorerUrls: ['https://evm.planq.network/'],
-          },
-        ],
-      })
+          ],
+        })
+      }
+    } else {
+      this._provider.checkNetwork()
     }
   }
 
   async __unlockServiceAccount(Contract) {
     this.sharedContext.account = await this.getAccount()
-    console.log(this.sharedContext.account)
     const signer = await this._provider.getSigner(0)
 
     const clonedContract = new ethers.Contract(
