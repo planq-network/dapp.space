@@ -14,6 +14,7 @@ class BlockchainService {
         name: 'Planq',
       },
       'planq_7070-2',
+      true,
     )
 
     this._provider.checkNetwork()
@@ -77,6 +78,7 @@ class BlockchainService {
 
   async __unlockServiceAccount(Contract) {
     this.sharedContext.account = await this.getAccount()
+    console.log(this.sharedContext.account)
     const signer = await this._provider.getSigner(0)
 
     const clonedContract = new ethers.Contract(

@@ -9,19 +9,19 @@ export class KeplrProvider extends JsonRpcProvider {
   keplrAvailable = false
   chainId = 'planq_7070-2'
   keplrSigner = null
-  constructor(url, network, chainId) {
+  constructor(url, network, chainId, overrideMetamask) {
     super(url, network)
 
     this.chainId = chainId
     if (window.keplr) {
       this.keplrAvailable = true
     }
-    this.attach()
+    this.attach(overrideMetamask)
   }
 
   // attach the provider to window.ethereum in case MetaMask is not available
-  attach() {
-    if (!window.ethereum) {
+  attach(overrideMetamask) {
+    if (!window.ethereum || overrideMetamask) {
       window.ethereum = this
     }
   }
@@ -44,7 +44,7 @@ export class KeplrProvider extends JsonRpcProvider {
   async getAccounts() {
     const offlineSigner = window.keplr.getOfflineSigner(this.chainId)
     const accounts = await offlineSigner.getAccounts()
-    return planqToEth(accounts[0].address)
+    return { 0: planqToEth(accounts[0].address) }
   }
 
   // Compatibility for window.ethereum.request - only used if MetaMask is not available
@@ -59,7 +59,7 @@ export class KeplrProvider extends JsonRpcProvider {
   }
 
   async getSigner(index) {
-    let account = await this.getAccountsBech32()
+    let account = await this.getAccounts()
     if (!this.keplrSigner) {
       this.keplrSigner = new KeplrSigner(account, this)
     }
