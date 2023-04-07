@@ -1,9 +1,6 @@
 import { JsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers'
 import { ethToPlanq, planqToEth } from './keplr-utils'
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { VoidSigner, Wallet } from 'ethers'
-
-const _constructorGuard = {}
+import { ethers, VoidSigner } from 'ethers'
 
 export class KeplrProvider extends JsonRpcProvider {
   keplrAvailable = false
@@ -61,7 +58,7 @@ export class KeplrProvider extends JsonRpcProvider {
   async getSigner(index) {
     let account = await this.getAccounts()
     if (!this.keplrSigner) {
-      this.keplrSigner = new KeplrSigner(account, this)
+      this.keplrSigner = new KeplrSigner(account[0], this)
     }
     return this.keplrSigner
   }
@@ -122,19 +119,21 @@ export class KeplrSigner extends VoidSigner {
     this.keplrInstance = provider
   }
   async signTransaction(transaction) {
-    return this.keplrInstance.signEthereum(
+    const account = await this.keplrInstance.getAccountsBech32()
+    return await window.keplr.signEthereum(
       this.keplrInstance.chainId,
-      this.keplrInstance.getAccountsBech32(),
-      transaction,
+      account,
+      JSON.stringify(transaction),
       'transaction',
     )
   }
 
   async signMessage(message) {
-    return this.keplrInstance.signEthereum(
+    const account = await this.keplrInstance.getAccountsBech32()
+    return await window.keplr.signEthereum(
       this.keplrInstance.chainId,
-      this.keplrInstance.getAccountsBech32(),
-      message,
+      account,
+      JSON.stringify(message),
       'message',
     )
   }
