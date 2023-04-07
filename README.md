@@ -4,6 +4,8 @@ Dapp.Space new and useful DApps that are mobile-friendly and easy to use. Viewin
 
 You can learn more about bonded curves and how Dapp.Space works [here](https://our.status.im/discover-a-brave-new-curve/).
 
+Dapp.Space is a fork from [Discover](https://github.com/dap-ps/discover/).
+
 ## Changelog
 
 ### 3rd April 2023
