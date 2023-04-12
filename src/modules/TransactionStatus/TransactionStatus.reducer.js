@@ -62,6 +62,13 @@ export const checkTransactionStatusAction = (tx, message) => {
       default:
       case 1:
         transacationStatus.setPublished(true, message)
+        setTimeout(
+          function() {
+            dispatch(hideAction())
+            console.log('hide action')
+          }.bind(this),
+          3000,
+        )
         try {
           const blockchain = await BlockchainSDK.getInstance()
           dapp = await blockchain.DiscoverService.getDAppDataById(
