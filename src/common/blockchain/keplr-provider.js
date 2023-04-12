@@ -120,6 +120,7 @@ export class KeplrSigner extends VoidSigner {
   }
   async signTransaction(transaction) {
     const account = await this.keplrInstance.getAccountsBech32()
+    transaction.gasLimit = transaction.gasLimit.mul(ethers.BigNumber.from(2))
     return await window.keplr.signEthereum(
       this.keplrInstance.chainId,
       account,
