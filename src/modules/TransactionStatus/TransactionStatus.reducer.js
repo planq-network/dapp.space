@@ -65,7 +65,6 @@ export const checkTransactionStatusAction = (tx, message) => {
         setTimeout(
           function() {
             dispatch(hideAction())
-            console.log('hide action')
           }.bind(this),
           3000,
         )
