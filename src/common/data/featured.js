@@ -1,35 +1,36 @@
 import inchBanner from '../assets/images/featured/inch_banner.png'
 import inchLogo from '../assets/images/featured/inch_logo.png'
-import HopersBanner from '../assets/images/featured/hopers.png'
-import HopersLogo from '../assets/images/featured/hopers_logo.png'
-import KujiraFinBanner from '../assets/images/featured/kujira_fin.png'
-import KujiraFinLogo from '../assets/images/featured/kujira_fin_logo.png'
-import OsmosisBanner from '../assets/images/featured/osmosis.png'
-import OsmosisLogo from '../assets/images/featured/osmosis_logo.png'
+import RestakeBanner from '../assets/images/featured/restake.png'
+import RestakeLogo from '../assets/images/featured/restake_logo.png'
+import YieldmosBanner from '../assets/images/featured/yieldmos.png'
+import YieldmosLogo from '../assets/images/featured/yieldmos_logo.png'
+import StrideBanner from '../assets/images/featured/stride.png'
+import StrideLogo from '../assets/images/featured/stride_logo.png'
 
 const featuredDapps = [
   {
-    name: 'Osmosis',
-    description: 'Osmosis is the premier cross-chain DeFi hub.',
-    url: 'https://app.osmosis.zone/',
-    banner: OsmosisBanner,
-    icon: OsmosisLogo,
+    name: 'Stride',
+    description:
+      'Liquid staking provider. Secure the Cosmos. Unlock liquidity. Earn more yield.',
+    url: 'https://app.stride.zone',
+    banner: StrideBanner,
+    icon: StrideLogo,
   },
   {
-    name: 'Hopers',
+    name: 'Restake',
     description:
-      'The first fully-permissionless DEX living in the Cosmos. Friction-less yield.',
-    url: 'https://hopers.io',
-    banner: HopersBanner,
-    icon: HopersLogo,
+      'Auto-compound your staking rewards and setup your own custom Authz grants for any chain in the Cosmos ecosystem ⚛️',
+    url: 'https://restake.app',
+    banner: RestakeBanner,
+    icon: RestakeLogo,
   },
   {
-    name: 'Kujira Fin',
+    name: 'Yieldmos',
     description:
-      "Cosmos's first decentralized, permissionless, 100% on-chain, order book style token exchange.",
-    url: 'https://fin.kujira.app',
-    banner: KujiraFinBanner,
-    icon: KujiraFinLogo,
+      'Non-custodial yield optimization and asset management for the Cosmos-verse | Not Smart Contract Based',
+    url: 'https://www.yieldmos.com/strategies',
+    banner: YieldmosBanner,
+    icon: YieldmosLogo,
   },
 ]
 
